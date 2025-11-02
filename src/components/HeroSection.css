@@ -1,0 +1,233 @@
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 5rem; /* 80px for navigation */
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+/* Grid Pattern Background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(181, 63, 63, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181, 63, 63, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  width: 100%;
+  height: 100%;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Animated Gears */
+.gear-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gear {
+  position: absolute;
+  border: 3px solid rgba(243, 201, 105, 0.3);
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+}
+
+.gear::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border: 2px solid rgba(243, 201, 105, 0.2);
+  border-radius: 50%;
+}
+
+.gear-1 {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  left: 15%;
+  animation-duration: 15s;
+}
+
+.gear-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 25%;
+  right: 20%;
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+
+.gear-3 {
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  animation-duration: 25s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Logo Animation */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* CTA Buttons */
+.cta-button {
+  position: relative;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cta-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.cta-primary {
+  background: linear-gradient(135deg, #B53F3F 0%, #8B3030 100%);
+  color: white;
+}
+
+.cta-primary:hover {
+  background: linear-gradient(135deg, #C54F4F 0%, #9B4040 100%);
+}
+
+.cta-secondary {
+  background: linear-gradient(135deg, #F3C969 0%, #E0B555 100%);
+  color: #2d2d2d;
+}
+
+.cta-secondary:hover {
+  background: linear-gradient(135deg, #FFD97D 0%, #F0C565 100%);
+}
+
+/* Shine Effect */
+.cta-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.cta-button:hover .cta-shine {
+  left: 100%;
+}
+
+/* Scroll Hint */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.scroll-hint:hover {
+  transform: translateY(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gear {
+    display: none;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .grid-pattern,
+  .gear,
+  .animate-pulse-slow,
+  .scroll-hint {
+    animation: none;
+  }
+
+  .parallax-bg {
+    transform: none !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #B53F3F, #F3C969);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #C54F4F, #FFD97D);
+}

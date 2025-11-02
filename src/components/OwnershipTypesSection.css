@@ -1,0 +1,379 @@
+/* Ownership Types Section Styles */
+
+.ownership-types-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.ownership-types-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(243, 201, 105, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(181, 63, 63, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* 3D Flip Cards */
+.ownership-card-3d {
+  perspective: 1000px;
+  height: 500px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.ownership-card-3d:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.card-front {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(20, 20, 20, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  color: white;
+}
+
+/* Icon Wrapper with Gradient */
+.icon-wrapper-gradient {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.ownership-card-3d:hover .icon-wrapper-gradient {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Marx Quote Box */
+.marx-quote {
+  margin-top: auto;
+  padding: 1rem;
+  background: rgba(243, 201, 105, 0.05);
+  border-left: 3px solid #F3C969;
+  border-radius: 8px;
+}
+
+/* Flip Hint */
+.flip-hint {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(243, 201, 105, 0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.ownership-card-3d:hover .flip-hint {
+  opacity: 0;
+}
+
+/* Decorative Gear on Card */
+.card-gear {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  opacity: 0.05;
+}
+
+.mini-gear {
+  width: 100%;
+  height: 100%;
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  animation: rotateGear 20s linear infinite;
+}
+
+.mini-gear::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+@keyframes rotateGear {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Vietnam Application Box */
+.vietnam-application-box {
+  background: linear-gradient(135deg, rgba(181, 63, 63, 0.1) 0%, rgba(243, 201, 105, 0.1) 100%);
+  border: 1px solid rgba(243, 201, 105, 0.2);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.application-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.application-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(243, 201, 105, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.number-badge {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #F3C969, #E0B555);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  box-shadow: 0 5px 15px rgba(243, 201, 105, 0.4);
+}
+
+/* Chart Container */
+.chart-container {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Pie Chart */
+.pie-chart-wrapper {
+  position: relative;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+.pie-segment {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  stroke: #1a1a1a;
+  stroke-width: 2;
+}
+
+.pie-segment:hover,
+.pie-segment.active {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+  transform-origin: center;
+}
+
+.pie-label {
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Chart Legend */
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+.legend-item {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.legend-item:hover,
+.legend-item.active {
+  border-color: rgba(243, 201, 105, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateX(8px);
+  background: linear-gradient(135deg, rgba(40, 40, 40, 0.8) 0%, rgba(30, 30, 30, 0.9) 100%);
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.percentage-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.percentage-fill {
+  height: 100%;
+  transition: width 0.8s ease;
+  border-radius: 3px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ownership-card-3d {
+    height: auto;
+    min-height: 450px;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 1.5rem;
+  }
+
+  .icon-wrapper-gradient {
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon-wrapper-gradient svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .vietnam-application-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .chart-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .pie-chart-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .legend-item {
+    padding: 1rem;
+  }
+
+  .number-badge {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet - Disable 3D flip, show both sides stacked */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .ownership-card-3d {
+    height: auto;
+  }
+
+  .card-inner {
+    transform: none !important;
+  }
+
+  .card-front,
+  .card-back {
+    position: relative;
+    transform: none !important;
+    backface-visibility: visible;
+    margin-bottom: 1rem;
+  }
+
+  .flip-hint {
+    display: none;
+  }
+}
+
+/* Touch devices - show back on tap */
+@media (hover: none) {
+  .ownership-card-3d {
+    height: auto;
+  }
+
+  .ownership-card-3d.touched .card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card-inner,
+  .pie-segment,
+  .legend-item,
+  .application-card,
+  .mini-gear {
+    transition: none;
+    animation: none;
+  }
+
+  .ownership-card-3d:hover .card-inner {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .flip-hint {
+    display: none;
+  }
+
+  .card-back {
+    position: relative;
+    transform: none;
+    page-break-inside: avoid;
+  }
+}

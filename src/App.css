@@ -1,0 +1,36 @@
+/* App Global Styles */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #1a1a1a;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: #F3C969;
+  color: #1a1a1a;
+}
+
+::-moz-selection {
+  background: #F3C969;
+  color: #1a1a1a;
+}
+
+/* Remove default margins */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #F3C969;
+  outline-offset: 4px;
+}
+

@@ -1,0 +1,570 @@
+/* ====================================
+   CASE STUDY SECTION STYLES
+   ==================================== */
+
+.case-study-section {
+  position: relative;
+}
+
+/* Header Animation */
+.case-header h2 {
+  animation: fadeInUp 0.8s ease-out;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #F3C969 50%,
+    #ffffff 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 4s ease infinite, fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientMove {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.case-header p {
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.divider {
+  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+/* Case Cards */
+.cases-grid {
+  animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+.case-card {
+  position: relative;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.case-card:hover {
+  box-shadow: 0 20px 40px rgba(181, 63, 63, 0.3);
+}
+
+.case-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(181, 63, 63, 0.5),
+    rgba(243, 201, 105, 0.5)
+  );
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.case-card:hover::before {
+  opacity: 1;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Case Image */
+.case-image-container {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.case-card:hover .case-image-container {
+  transform: scale(1.05);
+}
+
+.case-image-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(181, 63, 63, 0.2),
+    rgba(243, 201, 105, 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.case-card:hover .case-image-container::after {
+  opacity: 1;
+}
+
+/* Case Content */
+.case-content h3 {
+  position: relative;
+}
+
+.case-content h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #B53F3F, #F3C969);
+  transition: width 0.3s ease;
+}
+
+.case-card:hover .case-content h3::after {
+  width: 100%;
+}
+
+.case-content svg {
+  transition: all 0.3s ease;
+}
+
+.case-card:hover .case-content svg {
+  transform: rotate(5deg) scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(243, 201, 105, 0.5));
+}
+
+/* Case Button */
+.case-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.case-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.case-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.case-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Marx Quote Overlay */
+.marx-quote-overlay {
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Quote chỉ hiện khi hover vào IMAGE AREA */
+.case-image-container:hover .marx-quote-overlay {
+  opacity: 1;
+}
+
+/* Keep all content clickable */
+.case-content {
+  position: relative;
+  background: transparent;
+}
+
+.quote-content {
+  animation: slideUpQuote 0.6s ease-out;
+}
+
+@keyframes slideUpQuote {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quote-mark {
+  text-shadow: 0 4px 12px rgba(243, 201, 105, 0.6);
+}
+
+/* Tooltip Stats (Optional Enhancement) */
+.case-card[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 100;
+  animation: tooltipFadeIn 0.3s ease-out;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* CTA Block */
+.cta-block {
+  animation: fadeInUp 1s ease-out 0.8s backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-block::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(243, 201, 105, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: ctaShine 3s ease-in-out infinite;
+}
+
+@keyframes ctaShine {
+  0%, 100% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+.cta-block a {
+  position: relative;
+  z-index: 1;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #B53F3F, #F3C969);
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #F3C969, #B53F3F);
+}
+
+/* Modal Header */
+.modal-header {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-button {
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Modal Image */
+.modal-image {
+  position: relative;
+}
+
+.modal-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5),
+    transparent
+  );
+}
+
+/* Implementation Items */
+.implementation-item {
+  transition: all 0.3s ease;
+}
+
+.implementation-item:hover {
+  transform: translateX(5px);
+  background: rgba(243, 201, 105, 0.1);
+  border-left-color: #F3C969;
+}
+
+/* Stats Grid */
+.stat-card {
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(181, 63, 63, 0.3);
+}
+
+.stat-value {
+  animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Marx Connection Box */
+.marx-connection {
+  position: relative;
+  overflow: hidden;
+}
+
+.marx-connection::before {
+  content: '💡';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 120px;
+  opacity: 0.05;
+  transform: rotate(-15deg);
+}
+
+/* Marx Quote in Modal */
+.marx-quote-modal {
+  position: relative;
+}
+
+.marx-quote-modal::before,
+.marx-quote-modal::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(243, 201, 105, 0.5),
+    transparent
+  );
+}
+
+.marx-quote-modal::before {
+  top: 0;
+}
+
+.marx-quote-modal::after {
+  bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .case-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .case-study-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .case-header h2 {
+    font-size: 2rem;
+  }
+
+  .case-header p {
+    font-size: 1rem;
+  }
+
+  .cases-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .modal-content {
+    max-height: 95vh;
+  }
+
+  .modal-header {
+    padding: 1rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .case-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .case-content h3 {
+    font-size: 1.125rem;
+  }
+
+  .case-image-container {
+    height: 12rem;
+  }
+
+  .cta-block p {
+    font-size: 1rem;
+  }
+
+  .modal-image {
+    height: 12rem;
+  }
+}
+
+/* Accessibility */
+.case-button:focus-visible,
+.close-button:focus-visible {
+  outline: 2px solid rgba(243, 201, 105, 0.8);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .case-card,
+  .case-image-container,
+  .case-button,
+  .case-content svg,
+  .marx-quote-overlay,
+  .implementation-item,
+  .stat-card,
+  .close-button,
+  .modal-content,
+  .modal-overlay {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .case-card:hover {
+    transform: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .case-button,
+  .close-button,
+  .cta-block {
+    display: none;
+  }
+
+  .marx-quote-overlay {
+    opacity: 1;
+    position: relative;
+    background: none;
+  }
+}

@@ -1,0 +1,225 @@
+/* Background Music Controller Styles */
+
+.music-controller {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+/* Music Button */
+.music-button {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #B53F3F 0%, #8B3030 100%);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 
+    0 8px 20px rgba(181, 63, 63, 0.4),
+    0 0 0 0 rgba(181, 63, 63, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.music-button:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 12px 30px rgba(181, 63, 63, 0.6),
+    0 0 0 10px rgba(181, 63, 63, 0.1);
+}
+
+.music-button:active {
+  transform: scale(0.95);
+}
+
+/* Ripple Effect */
+.music-ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(243, 201, 105, 0.6);
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Volume Slider Container */
+.volume-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid rgba(243, 201, 105, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Volume Slider */
+.volume-slider {
+  width: 100px;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    #B53F3F 0%,
+    #B53F3F var(--volume, 30%),
+    rgba(255, 255, 255, 0.2) var(--volume, 30%),
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #F3C969, #E0B555);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 3px 12px rgba(243, 201, 105, 0.5);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #F3C969, #E0B555);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 3px 12px rgba(243, 201, 105, 0.5);
+}
+
+/* Volume Label */
+.volume-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #F3C969;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* Music Tooltip */
+.music-tooltip {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  padding: 0.5rem 1rem;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(243, 201, 105, 0.2);
+  color: #ECECEC;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.music-controller:hover .music-tooltip {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .music-controller {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .music-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .music-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .volume-slider-container {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .volume-slider {
+    width: 80px;
+  }
+
+  .music-tooltip {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+/* Accessibility */
+.music-button:focus-visible {
+  outline: 3px solid #F3C969;
+  outline-offset: 4px;
+}
+
+.volume-slider:focus-visible {
+  outline: 2px solid #F3C969;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .music-ripple,
+  .music-button,
+  .volume-slider-container {
+    animation: none;
+  }
+
+  .music-button:hover {
+    transform: none;
+  }
+}

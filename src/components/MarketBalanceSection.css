@@ -1,0 +1,639 @@
+/* Market Balance Section Styles */
+
+.market-balance-section {
+  position: relative;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  overflow: hidden;
+}
+
+.market-balance-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(243, 201, 105, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(181, 63, 63, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Text Gradient Animation */
+.text-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Sliders Container */
+.sliders-wrapper {
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sliders-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom Range Slider Styles */
+.slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+/* Market Slider (Blue) */
+.market-slider {
+  background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+}
+
+.market-slider::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.market-slider::-moz-range-thumb {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.market-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+.market-slider:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+/* State Slider (Red) */
+.state-slider {
+  background: linear-gradient(90deg, #7f1d1d 0%, #ef4444 100%);
+}
+
+.state-slider::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+}
+
+.state-slider::-moz-range-thumb {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+}
+
+.state-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+.state-slider:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+/* Welfare Slider (Green) */
+.welfare-slider {
+  background: linear-gradient(90deg, #14532d 0%, #22c55e 100%);
+}
+
+.welfare-slider::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+}
+
+.welfare-slider::-moz-range-thumb {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+}
+
+.welfare-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+.welfare-slider:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+/* Slider Control Animation */
+.slider-control {
+  animation: slideInLeft 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Check Balance Button */
+.check-balance-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.check-balance-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.check-balance-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.check-balance-btn:active {
+  transform: scale(0.95);
+}
+
+/* Reset Button */
+.reset-btn {
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Preset Buttons */
+.preset-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.preset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.preset-btn:active {
+  transform: translateY(0);
+}
+
+/* Chart Wrapper */
+.chart-wrapper {
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  min-height: 500px;
+}
+
+/* Chart Bars */
+.chart-bars {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+  border-radius: 15px;
+  padding: 2rem 1rem;
+}
+
+.chart-bar-container {
+  position: relative;
+}
+
+.chart-bar {
+  position: relative;
+  min-height: 20px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.chart-bar:hover {
+  transform: scaleY(1.05);
+  filter: brightness(1.2);
+}
+
+/* Bar Glow Effect */
+.bar-glow {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 20px;
+  background: inherit;
+  filter: blur(15px);
+  opacity: 0.6;
+  border-radius: 50%;
+}
+
+/* Market Bar */
+.market-bar {
+  animation: barPulse 2s ease-in-out infinite;
+}
+
+.market-bar .bar-glow {
+  background: #3b82f6;
+}
+
+/* State Bar */
+.state-bar {
+  animation: barPulse 2s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.state-bar .bar-glow {
+  background: #ef4444;
+}
+
+/* Welfare Bar */
+.welfare-bar {
+  animation: barPulse 2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.welfare-bar .bar-glow {
+  background: #22c55e;
+}
+
+@keyframes barPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Optimal Range Box */
+.optimal-range-box {
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.optimal-range-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(243, 201, 105, 0.2);
+}
+
+/* Balance Result Popup */
+.balance-result {
+  animation: resultPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  position: relative;
+}
+
+@keyframes resultPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.result-icon {
+  transition: transform 0.3s ease;
+}
+
+.balance-result:hover .result-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Details List Animation */
+.details-list p {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.details-list p:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.details-list p:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.details-list p:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Educational Cards */
+.educational-cards {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.edu-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.edu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.edu-card:hover::before {
+  left: 100%;
+}
+
+.edu-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.card-icon {
+  transition: transform 0.3s ease;
+}
+
+.edu-card:hover .card-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* Background Decorations Animation */
+.market-balance-section > div:last-child {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .chart-bars {
+    gap: 2rem;
+  }
+
+  .chart-bar-container {
+    width: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .market-balance-section {
+    padding: 3rem 1rem;
+  }
+
+  .balance-header h2 {
+    font-size: 2rem;
+  }
+
+  .sliders-wrapper,
+  .chart-wrapper {
+    padding: 1.5rem;
+  }
+
+  .chart-bars {
+    height: 250px;
+    gap: 1.5rem;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .chart-bar-container {
+    width: 50px;
+  }
+
+  .slider-control {
+    margin-bottom: 2rem;
+  }
+
+  .check-balance-btn {
+    padding: 1rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .balance-result {
+    padding: 1.5rem;
+  }
+
+  .balance-result h3 {
+    font-size: 1.25rem;
+  }
+
+  .educational-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .edu-card {
+    padding: 1.5rem;
+  }
+
+  .optimal-range-box {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .balance-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .balance-header p {
+    font-size: 0.875rem;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+  }
+
+  .chart-bars {
+    height: 200px;
+  }
+
+  .chart-bar-wrapper p {
+    font-size: 0.75rem;
+  }
+
+  .preset-models {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility */
+.slider:focus-visible,
+.check-balance-btn:focus-visible,
+.reset-btn:focus-visible,
+.preset-btn:focus-visible {
+  outline: 3px solid #F3C969;
+  outline-offset: 4px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient,
+  .slider-control,
+  .balance-result,
+  .details-list p,
+  .edu-card::before,
+  .bar-glow,
+  .market-balance-section > div:last-child {
+    animation: none;
+  }
+
+  .edu-card:hover,
+  .sliders-wrapper:hover,
+  .chart-bar:hover {
+    transform: none;
+  }
+
+  .check-balance-btn::before {
+    display: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .check-balance-btn,
+  .reset-btn,
+  .preset-models {
+    display: none;
+  }
+
+  .balance-result {
+    border: 2px solid #333;
+    page-break-inside: avoid;
+  }
+
+  .chart-bars {
+    page-break-inside: avoid;
+  }
+}
+
+/* Dark Mode Enhancement (if needed) */
+@media (prefers-color-scheme: dark) {
+  .sliders-wrapper,
+  .chart-wrapper {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+  }
+
+  .slider {
+    filter: brightness(0.9);
+  }
+}
+
+/* Loading State for Charts */
+.chart-bar.loading {
+  animation: barLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes barLoading {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Success Animation */
+.balance-result.success {
+  animation: successPulse 0.8s ease-out;
+}
+
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+  }
+}
+
+/* Tooltip for sliders */
+.slider-control::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.slider-control:hover::after {
+  opacity: 1;
+}
