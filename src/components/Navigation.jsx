@@ -1,4 +1,4 @@
-import { Home, FileText } from 'lucide-react';
+import { Home, FileText, Gamepad2 } from 'lucide-react';
 import './Navigation.css';
 
 const Navigation = ({ activeTab, setActiveTab }) => {
@@ -38,6 +38,14 @@ const Navigation = ({ activeTab, setActiveTab }) => {
             >
               <FileText className="w-5 h-5" />
               <span>Case Study</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('minigame')}
+              className={`nav-tab ${activeTab === 'minigame' ? 'active' : ''}`}
+            >
+              <Gamepad2 className="w-5 h-5" />
+              <span>Mini Game</span>
             </button>
           </div>
 
