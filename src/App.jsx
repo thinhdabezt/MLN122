@@ -7,6 +7,7 @@ import DistributionSection from './components/DistributionSection'
 import MarketBalanceSection from './components/MarketBalanceSection'
 import TimelineSection from './components/TimelineSection'
 import CaseStudySection from './components/CaseStudySection'
+import MiniGameSection from './components/MiniGameSection'
 import './App.css'
 
 function App() {
@@ -32,6 +33,13 @@ function App() {
       {activeTab === 'case-study' && (
         <div className="case-study-content pt-20">
           <CaseStudySection />
+        </div>
+      )}
+
+      {/* Tab 3: Mini Game */}
+      {activeTab === 'minigame' && (
+        <div className="minigame-content">
+          <MiniGameSection setActiveTab={setActiveTab} />
         </div>
       )}
       

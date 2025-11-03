@@ -444,3 +444,285 @@ Thêm vào thẻ img:
 ---
 
 **Cập nhật:** Ngày 02/11/2025
+
+---
+
+## Section 8: Mini Game - 4 Ảnh Game Infographics
+
+### 8.1 Ảnh Game 1: Ownership Mix ⚖️
+**Path:** `public/images/minigame/ownership-mix-game.jpg`
+
+**Mô tả yêu cầu:**
+- Infographic về phân loại sở hữu: Nhà nước, Tư nhân, Hợp tác xã, FDI
+- Phong cách: Educational infographic, game UI mockup
+- Tone màu: Red-earth (#B53F3F), Soft-gold (#F3C969), Blue (state), Green (private)
+- Kích thước khuyến nghị: 1200x800px
+- Tỷ lệ: 3:2 hoặc 16:9
+
+**Gợi ý nội dung ảnh:**
+- Biểu đồ tròn (pie chart) tỷ lệ GDP các thành phần: Nhà nước 28.2%, Tư nhân 42.3%, FDI 20.1%
+- Icons doanh nghiệp: Factory (NN), Office (TN), Handshake (Liên doanh), Farm (HTX)
+- Drag-and-drop UI mockup với 12 logo doanh nghiệp thật (Vingroup, EVN, Samsung...)
+- 4 nhóm phân loại với màu sắc khác biệt
+
+**Nguồn tạo infographic:**
+- Canva: https://www.canva.com/ (template infographic miễn phí)
+- Figma: Tự thiết kế UI game
+- Piktochart: https://piktochart.com/ (data visualization)
+- Visme: https://www.visme.co/ (infographic maker)
+
+**Dữ liệu thực tế:**
+- Tổng cục Thống kê Việt Nam: https://www.gso.gov.vn/
+- Báo cáo kinh tế Việt Nam 2023
+
+---
+
+### 8.2 Ảnh Game 2: Surplus Hunter 💰
+**Path:** `public/images/minigame/surplus-value-game.jpg`
+
+**Mô tả yêu cầu:**
+- Infographic công thức Marx về giá trị thặng dư: m' = m/v
+- Phong cách: Industrial dashboard, factory simulation game UI
+- Tone màu: Yellow/Gold (value), Red (surplus), Gray (labor)
+- Kích thước khuyến nghị: 1200x800px
+- Tỷ lệ: 3:2 hoặc 16:9
+
+**Gợi ý nội dung ảnh:**
+- Nhà máy ảo với công nhân đang làm việc (illustration)
+- 3 thanh chỉ số (gauges/bars):
+  * Giá trị tạo ra (Value Created) - màu vàng
+  * Chi phí lao động (Labor Cost) - màu xám
+  * Giá trị thặng dư (Surplus Value) - màu đỏ
+- Công thức toán học Marx: m' = m/v với giải thích
+- Biểu đồ cột (bar chart) so sánh năng suất vs. lương
+- Game controls: Sliders để điều chỉnh số công nhân, giờ làm, mức lương
+
+**Nguồn tạo:**
+- Canva (factory infographic templates)
+- Freepik (download factory illustration vectors)
+- Figma (design custom dashboard UI)
+- Adobe Illustrator (professional infographic)
+
+**Công thức Marx:**
+```
+m' = m/v
+m' = Tỷ suất giá trị thặng dư (Rate of Surplus Value)
+m = Giá trị thặng dư (Surplus Value)
+v = Giá trị sức lao động (Variable Capital / Wages)
+```
+
+---
+
+### 8.3 Ảnh Game 3: Labor Value Challenge 🧵
+**Path:** `public/images/minigame/labor-value-game.jpg`
+
+**Mô tả yêu cầu:**
+- Infographic chuỗi giá trị sản xuất (value chain)
+- Phong cách: Educational quiz UI, product timeline
+- Tone màu: Brown (#8B4513), Orange (production), White (clean)
+- Kích thước khuyến nghị: 1200x800px
+- Tỷ lệ: 3:2 hoặc 16:9
+
+**Gợi ý nội dung ảnh:**
+- 8 sản phẩm với icons: Áo sơ mi, Điện thoại, Xe máy, Tô phở, Laptop, Giày, Túi xách, Cà phê
+- Timeline chuỗi sản xuất:
+  1. Nguyên liệu thô (Raw Materials) - 20% thời gian
+  2. Sản xuất (Production) - 50% thời gian
+  3. Phân phối (Distribution) - 20% thời gian
+  4. Bán lẻ (Retail) - 10% thời gian
+- Clock icon với số giờ lao động
+- Quiz interface: Input box để người chơi nhập ước lượng
+- So sánh: Ước lượng vs. Giá trị thực tế (±15% accuracy bar)
+
+**Nguồn tạo:**
+- Canva (timeline templates)
+- Visme (process flow diagrams)
+- Figma (quiz UI design)
+- Piktochart (educational infographics)
+
+**Dữ liệu thực tế (tham khảo):**
+- 1 áo sơ mi: 2.5 giờ (cắt + may + hoàn thiện)
+- 1 điện thoại: 8-12 giờ (lắp ráp + kiểm tra)
+- 1 tô phở: 0.5 giờ (nấu nước dùng + chuẩn bị topping)
+
+---
+
+### 8.4 Ảnh Game 4: The Guided Market 🌏
+**Path:** `public/images/minigame/guided-market-game.jpg`
+
+**Mô tả yêu cầu:**
+- Dashboard kinh tế với 4-6 biểu đồ thời gian thực
+- Phong cách: Government economic simulator, strategy game UI
+- Tone màu: Crimson (#DC143C), Blue (government), Green (growth), Yellow (balance)
+- Kích thước khuyến nghị: 1400x900px (landscape wide)
+- Tỷ lệ: 16:9 hoặc wider
+
+**Gợi ý nội dung ảnh:**
+- **Radar Chart (trung tâm):** Cân bằng 4 mục tiêu:
+  * Tăng trưởng GDP (Growth)
+  * Công bằng xã hội / Gini Index (Equality)
+  * Thất nghiệp (Unemployment)
+  * Nợ công (Public Debt)
+- **5 Control Sliders (bên trái):**
+  1. Thuế doanh nghiệp (10-35%)
+  2. Đầu tư công (3-10% GDP)
+  3. Tỷ lệ sở hữu NN (20-60%)
+  4. Hỗ trợ DN nhỏ (Low-High)
+  5. Kiểm soát giá (Minimal-Strong)
+- **4 Line Charts (bên phải):**
+  * GDP Growth (7% target line)
+  * Gini Index (0.4 target line)
+  * Unemployment Rate (3% target)
+  * Public Debt (65% GDP threshold)
+- **Bottom Bar:** Score counter + Turn indicator + Feedback messages
+
+**Nguồn tạo:**
+- Canva Pro (advanced dashboard templates)
+- Figma (custom UI/UX design)
+- Adobe XD (prototype game interface)
+- Power BI / Tableau (export dashboard as image)
+- D3.js (code custom charts, screenshot)
+
+**Biểu đồ mẫu:**
+- Trading Economics: https://tradingeconomics.com/vietnam/gdp-growth
+- World Bank Data: https://data.worldbank.org/country/vietnam
+- Screenshot và edit với Canva/Figma
+
+---
+
+### Cách Thay Thế Placeholder Mini Game
+
+**Hiện tại:** Emoji + placeholder text trong gradient background
+
+```jsx
+<div className="game-image-placeholder">
+  <span className="game-emoji">{game.emoji}</span>
+  <span className="placeholder-text">{game.imagePlaceholder}</span>
+</div>
+```
+
+**Sau khi có ảnh thật, cập nhật trong `MiniGameSection.jsx`:**
+
+#### Cách 1: Thay thế trực tiếp trong JSX
+```jsx
+// Tìm object games[] và thêm property 'image':
+const games = [
+  {
+    id: 'ownership-mix',
+    emoji: '⚖️',
+    title: 'Sở Hữu Hỗn Hợp',
+    imagePlaceholder: 'ownership-mix-game',
+    image: '/images/minigame/ownership-mix-game.jpg', // Thêm dòng này
+    // ... rest of properties
+  },
+  // ... repeat for other games
+];
+
+// Sau đó trong render, thay <game-image-placeholder> bằng:
+<div className="game-image-container">
+  <img 
+    src={game.image || 'fallback-placeholder.jpg'} 
+    alt={game.title}
+    className="w-full h-full object-cover"
+  />
+  {/* Marx Quote Overlay vẫn giữ nguyên */}
+  <div className="marx-quote-overlay">...</div>
+</div>
+```
+
+#### Cách 2: Giữ placeholder nhưng thêm background-image
+```jsx
+<div 
+  className="game-image-placeholder"
+  style={{
+    backgroundImage: `url('/images/minigame/${game.imagePlaceholder}.jpg')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }}
+>
+  {/* Emoji có thể ẩn hoặc giữ lại như watermark */}
+</div>
+```
+
+#### Modal Image cũng tương tự:
+```jsx
+// Hiện tại:
+<div className="modal-image-placeholder">
+  <span className="modal-emoji">{selectedGame.emoji}</span>
+  <p className="modal-image-text">{selectedGame.details.infographic}</p>
+</div>
+
+// Thay thế:
+<div className="modal-image-container">
+  <img 
+    src={selectedGame.image} 
+    alt={selectedGame.title}
+    className="w-full h-full object-cover rounded-lg"
+  />
+  <div className="image-caption">
+    {selectedGame.details.infographic}
+  </div>
+</div>
+```
+
+---
+
+### CSS Update cho Modal Image (nếu dùng ảnh thật)
+
+Thêm vào `MiniGameSection.css`:
+
+```css
+.modal-image-container img {
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.image-caption {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--soft-gold);
+  text-align: center;
+  font-style: italic;
+}
+```
+
+---
+
+## 💡 Mẹo thiết kế Infographics cho Mini Games
+
+### 1. Sử dụng Canva Templates:
+- Tìm "game UI", "dashboard infographic", "educational poster"
+- Customize màu sắc theo theme Marx → Việt Nam
+- Export PNG/JPG 300 DPI
+
+### 2. Figma Community:
+- Tìm "economic dashboard", "strategy game UI", "data visualization"
+- Duplicate và chỉnh sửa
+- Export as PNG 2x
+
+### 3. Freepik Resources:
+- Download vector illustrations: Factory, office, farmers
+- Combine trong Adobe Illustrator hoặc Inkscape
+- Export high-res JPG
+
+### 4. Screenshot thực tế + Edit:
+- Chụp dashboard thật (Trading Economics, World Bank)
+- Blur/anonymize sensitive data
+- Overlay với icons và labels tự thiết kế
+
+### 5. Code Charts với D3.js/Chart.js:
+```javascript
+// Tạo biểu đồ bằng Chart.js, sau đó screenshot
+const ctx = document.getElementById('gdpChart');
+new Chart(ctx, {
+  type: 'line',
+  data: { labels: ['2015','2016','2017','2018','2019','2020','2021','2022','2023'],
+          datasets: [{ label: 'GDP Growth %', data: [6.7,6.2,6.8,7.1,7.0,2.9,2.6,8.0,6.5] }]
+        }
+});
+// Chụp màn hình canvas
+```
+
+---
+
+**Cập nhật cuối:** Ngày 03/11/2025
