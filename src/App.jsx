@@ -20,7 +20,7 @@ function App() {
       {/* Tab 1: Trang Chủ */}
       {activeTab === 'home' && (
         <div className="home-content">
-          <HeroSection />
+          <HeroSection setActiveTab={setActiveTab} />
           <OwnershipSection />
           <OwnershipTypesSection />
           <DistributionSection />
@@ -32,7 +32,7 @@ function App() {
       {/* Tab 2: Case Study */}
       {activeTab === 'case-study' && (
         <div className="case-study-content pt-20">
-          <CaseStudySection />
+          <CaseStudySection setActiveTab={setActiveTab} />
         </div>
       )}
 

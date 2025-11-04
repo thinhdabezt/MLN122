@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  User, 
-  Building2, 
-  Users, 
-  Factory, 
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  User,
+  Building2,
+  Users,
+  Factory,
   TrendingUp,
   Sparkles,
   Globe,
-  ChevronRight
-} from 'lucide-react';
-import './OwnershipTypesSection.css';
+  ChevronRight,
+} from "lucide-react";
+import "./OwnershipTypesSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,11 +39,11 @@ const OwnershipTypesSection = () => {
               rotateY: 0,
               duration: 0.8,
               delay: index * 0.15,
-              ease: 'power3.out',
+              ease: "power3.out",
               scrollTrigger: {
                 trigger: card,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse',
+                start: "top 85%",
+                toggleActions: "play none none reverse",
               },
             }
           );
@@ -62,11 +62,11 @@ const OwnershipTypesSection = () => {
             opacity: 1,
             scale: 1,
             duration: 1,
-            ease: 'back.out(1.2)',
+            ease: "back.out(1.2)",
             scrollTrigger: {
               trigger: chartRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse',
+              start: "top 80%",
+              toggleActions: "play none none reverse",
             },
           }
         );
@@ -78,106 +78,106 @@ const OwnershipTypesSection = () => {
 
   const ownershipTypes = [
     {
-      id: 'individual',
+      id: "individual",
       icon: <User className="w-12 h-12" />,
-      title: 'Sở hữu Cá nhân',
-      subtitle: 'Công cụ lao động đơn giản',
+      title: "Sở hữu Cá nhân",
+      subtitle: "Công cụ lao động đơn giản",
       description:
-        'Người lao động sở hữu công cụ sản xuất nhỏ, tự mình làm việc không bóc lột người khác.',
+        "Người lao động sở hữu công cụ sản xuất nhỏ, tự mình làm việc không bóc lột người khác.",
       marxView:
-        'Marx mô tả đây là hình thức sở hữu tiền tư bản chủ nghĩa, nơi người thợ thủ công sở hữu dụng cụ của mình.',
+        "Marx mô tả đây là hình thức sở hữu tiền tư bản chủ nghĩa, nơi người thợ thủ công sở hữu dụng cụ của mình.",
       vietnamExample: {
-        title: 'Ví dụ Việt Nam',
+        title: "Ví dụ Việt Nam",
         items: [
-          '👨‍🌾 Hộ nông dân canh tác trên mảnh đất của mình',
-          '👨‍🔧 Thợ thủ công làm nghề truyền thống',
-          '🛒 Tiểu thương kinh doanh nhỏ lẻ',
-          '💼 Freelancer, dịch vụ cá nhân',
+          "👨‍🌾 Hộ nông dân canh tác trên mảnh đất của mình",
+          "👨‍🔧 Thợ thủ công làm nghề truyền thống",
+          "🛒 Tiểu thương kinh doanh nhỏ lẻ",
+          "💼 Freelancer, dịch vụ cá nhân",
         ],
-        note: 'Chiếm tỷ trọng lớn trong nền kinh tế, đặc biệt ở nông thôn',
+        note: "Chiếm tỷ trọng lớn trong nền kinh tế, đặc biệt ở nông thôn",
       },
-      color: 'from-blue-500 to-cyan-600',
-      bgColor: 'bg-blue-500/10',
+      color: "from-blue-500 to-cyan-600",
+      bgColor: "bg-blue-500/10",
     },
     {
-      id: 'private',
+      id: "private",
       icon: <Factory className="w-12 h-12" />,
-      title: 'Sở hữu Tư nhân TBCN',
-      subtitle: 'Tư liệu sản xuất tập trung',
+      title: "Sở hữu Tư nhân TBCN",
+      subtitle: "Tư liệu sản xuất tập trung",
       description:
-        'Giai cấp tư sản sở hữu tư liệu sản xuất, người lao động bán sức lao động và bị bóc lột giá trị thặng dư.',
+        "Giai cấp tư sản sở hữu tư liệu sản xuất, người lao động bán sức lao động và bị bóc lột giá trị thặng dư.",
       marxView:
-        'Marx chỉ ra đây là nguồn gốc của sự bất bình đẳng và mâu thuẫn giai cấp trong TBCN.',
+        "Marx chỉ ra đây là nguồn gốc của sự bất bình đẳng và mâu thuẫn giai cấp trong TBCN.",
       vietnamExample: {
-        title: 'Ví dụ Việt Nam (Vận dụng sáng tạo)',
+        title: "Ví dụ Việt Nam (Vận dụng sáng tạo)",
         items: [
-          '🏢 Vingroup - Tập đoàn tư nhân lớn nhất VN',
-          '🏪 Masan Group - Bán lẻ & tiêu dùng',
-          '🏭 Hòa Phát - Sản xuất thép',
-          '🌾 TH True Milk - Nông nghiệp công nghệ cao',
+          "🏢 Vingroup - Tập đoàn tư nhân lớn nhất VN",
+          "🏪 Masan Group - Bán lẻ & tiêu dùng",
+          "🏭 Hòa Phát - Sản xuất thép",
+          "🌾 TH True Milk - Nông nghiệp công nghệ cao",
         ],
-        note: 'Động lực quan trọng cho tăng trưởng, tạo việc làm - được Nhà nước khuyến khích phát triển',
+        note: "Động lực quan trọng cho tăng trưởng, tạo việc làm - được Nhà nước khuyến khích phát triển",
       },
-      color: 'from-red-earth to-red-700',
-      bgColor: 'bg-red-earth/10',
+      color: "from-red-earth to-red-700",
+      bgColor: "bg-red-earth/10",
     },
     {
-      id: 'public',
+      id: "public",
       icon: <Users className="w-12 h-12" />,
-      title: 'Sở hữu Công cộng/XHCN',
-      subtitle: 'Toàn dân làm chủ',
+      title: "Sở hữu Công cộng/XHCN",
+      subtitle: "Toàn dân làm chủ",
       description:
-        'Nhà nước đại diện cho nhân dân nắm giữ tư liệu sản xuất quan trọng, phục vụ lợi ích chung.',
+        "Nhà nước đại diện cho nhân dân nắm giữ tư liệu sản xuất quan trọng, phục vụ lợi ích chung.",
       marxView:
-        'Marx cho rằng đây là hình thức sở hữu tiến bộ nhất, xóa bỏ bóc lột, xây dựng xã hội bình đẳng.',
+        "Marx cho rằng đây là hình thức sở hữu tiến bộ nhất, xóa bỏ bóc lột, xây dựng xã hội bình đẳng.",
       vietnamExample: {
-        title: 'Ví dụ Việt Nam (Vai trò chủ đạo)',
+        title: "Ví dụ Việt Nam (Vai trò chủ đạo)",
         items: [
-          '⚡ EVN - Điện lực Việt Nam',
-          '🛢️ PetroVietnam - Dầu khí quốc gia',
-          '🏦 Vietcombank - Ngân hàng TMCP nhà nước',
-          '✈️ Vietnam Airlines - Hàng không quốc gia',
+          "⚡ EVN - Điện lực Việt Nam",
+          "🛢️ PetroVietnam - Dầu khí quốc gia",
+          "🏦 Vietcombank - Ngân hàng TMCP nhà nước",
+          "✈️ Vietnam Airlines - Hàng không quốc gia",
         ],
-        note: 'Kinh tế nhà nước giữ vai trò chủ đạo, định hướng phát triển bền vững',
+        note: "Kinh tế nhà nước giữ vai trò chủ đạo, định hướng phát triển bền vững",
       },
-      color: 'from-soft-gold to-yellow-600',
-      bgColor: 'bg-soft-gold/10',
+      color: "from-soft-gold to-yellow-600",
+      bgColor: "bg-soft-gold/10",
     },
   ];
 
   // Dữ liệu biểu đồ tỷ trọng các thành phần kinh tế VN
   const economicSegments = [
     {
-      id: 'state',
-      name: 'Kinh tế Nhà nước',
+      id: "state",
+      name: "Kinh tế Nhà nước",
       percentage: 28.5,
-      color: '#F3C969',
-      description: 'Vai trò chủ đạo, định hướng',
-      examples: 'EVN, Petrovietnam, VNPT, Viettel',
+      color: "#F3C969",
+      description: "Vai trò chủ đạo, định hướng",
+      examples: "EVN, Petrovietnam, VNPT, Viettel",
     },
     {
-      id: 'private',
-      name: 'Kinh tế Tư nhân',
+      id: "private",
+      name: "Kinh tế Tư nhân",
       percentage: 42.3,
-      color: '#B53F3F',
-      description: 'Động lực tăng trưởng chính',
-      examples: 'Vingroup, Masan, Hòa Phát, TH',
+      color: "#B53F3F",
+      description: "Động lực tăng trưởng chính",
+      examples: "Vingroup, Masan, Hòa Phát, TH",
     },
     {
-      id: 'fdi',
-      name: 'Vốn đầu tư nước ngoài (FDI)',
+      id: "fdi",
+      name: "Vốn đầu tư nước ngoài (FDI)",
       percentage: 20.8,
-      color: '#60A5FA',
-      description: 'Chuyển giao công nghệ, xuất khẩu',
-      examples: 'Samsung, Intel, LG, Toyota',
+      color: "#60A5FA",
+      description: "Chuyển giao công nghệ, xuất khẩu",
+      examples: "Samsung, Intel, LG, Toyota",
     },
     {
-      id: 'cooperative',
-      name: 'Kinh tế Hợp tác xã',
+      id: "cooperative",
+      name: "Kinh tế Hợp tác xã",
       percentage: 8.4,
-      color: '#34D399',
-      description: 'Phát triển cộng đồng',
-      examples: 'HTX nông nghiệp, tín dụng',
+      color: "#34D399",
+      description: "Phát triển cộng đồng",
+      examples: "HTX nông nghiệp, tín dụng",
     },
   ];
 
@@ -204,6 +204,11 @@ const OwnershipTypesSection = () => {
     <section
       ref={sectionRef}
       className="ownership-types-section min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 py-20 px-6"
+      // style={{
+      //   backgroundImage: "url('/images/ownership-types-bg.jpg')",
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      // }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -214,11 +219,11 @@ const OwnershipTypesSection = () => {
               Section 2: Phân tích sở hữu
             </span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Ai nắm, ai làm chủ?
           </h2>
-          
+
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Ba hình thức sở hữu và sự vận dụng sáng tạo ở Việt Nam
           </p>
@@ -230,37 +235,41 @@ const OwnershipTypesSection = () => {
             </span>
           </div>
         </div>
-
         {/* 3 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20" style={{ alignItems: 'start' }}>
           {ownershipTypes.map((type, index) => (
             <div
               key={type.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="ownership-card-3d"
+              style={{ height: '500px' }}
             >
-              <div className="card-inner">
+              <div className="ownership-card-3d">
+                <div className="card-inner">
                 {/* Front Side */}
                 <div className={`card-front ${type.bgColor}`}>
-                  <div className={`icon-wrapper-gradient bg-gradient-to-br ${type.color}`}>
+                  <div
+                    className={`icon-wrapper-gradient bg-gradient-to-br ${type.color}`}
+                  >
                     {type.icon}
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {type.title}
                   </h3>
-                  
+
                   <p className="text-soft-gold text-sm mb-4 font-semibold">
                     {type.subtitle}
                   </p>
-                  
+
                   <p className="text-gray-300 leading-relaxed mb-4">
                     {type.description}
                   </p>
 
                   <div className="marx-quote">
                     <div className="flex items-start gap-2">
-                      <span className="text-soft-gold text-2xl leading-none">"</span>
+                      <span className="text-soft-gold text-2xl leading-none">
+                        "
+                      </span>
                       <p className="text-sm text-gray-400 italic flex-1">
                         {type.marxView}
                       </p>
@@ -294,8 +303,10 @@ const OwnershipTypesSection = () => {
                           key={idx}
                           className="text-white/90 flex items-start gap-2 text-sm"
                         >
-                          <span className="text-lg leading-none">{item.split(' ')[0]}</span>
-                          <span>{item.substring(item.indexOf(' ') + 1)}</span>
+                          <span className="text-lg leading-none">
+                            {item.split(" ")[0]}
+                          </span>
+                          <span>{item.substring(item.indexOf(" ") + 1)}</span>
                         </li>
                       ))}
                     </ul>
@@ -309,9 +320,9 @@ const OwnershipTypesSection = () => {
                 </div>
               </div>
             </div>
+            </div>
           ))}
         </div>
-
         {/* Vietnam's Creative Application */}
         <div className="vietnam-application-box mb-20">
           <div className="flex items-center gap-3 mb-6">
@@ -328,8 +339,8 @@ const OwnershipTypesSection = () => {
                 Kinh tế nhiều thành phần
               </h4>
               <p className="text-gray-300 text-sm">
-                Nhà nước, tư nhân, hợp tác xã, FDI... cùng phát triển, 
-                tạo sức mạnh tổng hợp cho nền kinh tế.
+                Nhà nước, tư nhân, hợp tác xã, FDI... cùng phát triển, tạo sức
+                mạnh tổng hợp cho nền kinh tế.
               </p>
             </div>
 
@@ -339,7 +350,7 @@ const OwnershipTypesSection = () => {
                 Kinh tế nhà nước chủ đạo
               </h4>
               <p className="text-gray-300 text-sm">
-                Nắm giữ các ngành then chốt (năng lượng, tài chính, hạ tầng), 
+                Nắm giữ các ngành then chốt (năng lượng, tài chính, hạ tầng),
                 định hướng phát triển bền vững.
               </p>
             </div>
@@ -350,13 +361,12 @@ const OwnershipTypesSection = () => {
                 Tư nhân là động lực
               </h4>
               <p className="text-gray-300 text-sm">
-                Khuyến khích phát triển kinh tế tư nhân, tạo việc làm, 
-                thúc đẩy đổi mới sáng tạo trong thời kỳ công nghiệp hóa.
+                Khuyến khích phát triển kinh tế tư nhân, tạo việc làm, thúc đẩy
+                đổi mới sáng tạo trong thời kỳ công nghiệp hóa.
               </p>
             </div>
           </div>
         </div>
-
         {/* Interactive Pie Chart - Economic Components */}
         <div ref={chartRef} className="chart-container">
           <h3 className="text-3xl font-bold text-white text-center mb-4">
@@ -369,10 +379,7 @@ const OwnershipTypesSection = () => {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             {/* SVG Pie Chart */}
             <div className="pie-chart-wrapper">
-              <svg
-                viewBox="0 0 400 400"
-                className="w-full h-auto max-w-md"
-              >
+              <svg viewBox="0 0 400 400" className="w-full h-auto max-w-md">
                 {economicSegments.map((segment) => {
                   const { path, angle } = getPieChartPath(
                     segment.percentage,
@@ -387,7 +394,7 @@ const OwnershipTypesSection = () => {
                         d={path}
                         fill={segment.color}
                         className={`pie-segment ${
-                          selectedSegment === segment.id ? 'active' : ''
+                          selectedSegment === segment.id ? "active" : ""
                         }`}
                         onMouseEnter={() => setSelectedSegment(segment.id)}
                         onMouseLeave={() => setSelectedSegment(null)}
@@ -420,7 +427,7 @@ const OwnershipTypesSection = () => {
                     </g>
                   );
                 })}
-                
+
                 {/* Center circle */}
                 <circle cx="200" cy="200" r="60" fill="#1a1a1a" />
                 <text
@@ -443,7 +450,7 @@ const OwnershipTypesSection = () => {
                 <div
                   key={segment.id}
                   className={`legend-item ${
-                    selectedSegment === segment.id ? 'active' : ''
+                    selectedSegment === segment.id ? "active" : ""
                   }`}
                   onMouseEnter={() => setSelectedSegment(segment.id)}
                   onMouseLeave={() => setSelectedSegment(null)}
@@ -482,14 +489,18 @@ const OwnershipTypesSection = () => {
 
               <div className="mt-6 p-4 bg-soft-gold/10 border border-soft-gold/20 rounded-lg">
                 <p className="text-sm text-gray-300 italic">
-                  📊 <strong className="text-soft-gold">Lưu ý:</strong> Số liệu ước tính năm 2024, 
-                  thể hiện sự đa dạng và cân bằng trong mô hình kinh tế thị trường 
-                  định hướng xã hội chủ nghĩa của Việt Nam.
+                  📊 <strong className="text-soft-gold">Lưu ý:</strong> Số liệu
+                  ước tính năm 2024, thể hiện sự đa dạng và cân bằng trong mô
+                  hình kinh tế thị trường định hướng xã hội chủ nghĩa của Việt
+                  Nam.
                 </p>
               </div>
             </div>
           </div>
         </div>
+        {/* Decorative fade overlays - NOTE: Change color here if needed (currently gray-900) */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-900 to-transparent z-10"></div>{" "}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10"></div>
       </div>
     </section>
   );

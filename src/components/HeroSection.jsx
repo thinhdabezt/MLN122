@@ -6,7 +6,7 @@ import './HeroSection.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroSection = () => {
+const HeroSection = ({ setActiveTab }) => {
   const heroRef = useRef(null);
   const contentRef = useRef(null);
   const parallaxRef = useRef(null);
@@ -70,29 +70,23 @@ const HeroSection = () => {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-red-earth/30 via-transparent to-soft-gold/20 z-10"></div>
         
-        {/* 
-          PLACEHOLDER: Thay thế bằng ảnh thành phố Việt Nam hiện đại
-          Gợi ý: Ảnh Landmark 81, Bitexco, hoặc skyline Hà Nội/Sài Gòn
-          URL mẫu: '/images/vietnam-city-skyline.jpg'
-        */}
-        <div className="vietnam-city-bg absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        {/* Vietnam City Background */}
+        <div 
+          className="vietnam-city-bg absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/vietnam-street.jpg')" }}
+        >
           <div className="absolute inset-0 opacity-20">
             <div className="grid-pattern"></div>
           </div>
         </div>
 
-        {/* 
-          PLACEHOLDER: Ảnh Karl Marx mờ, xuất hiện dần
-          Gợi ý: Ảnh chân dung Karl Marx với opacity thấp
-          URL mẫu: '/images/karl-marx-portrait.png'
-        */}
+        {/* Karl Marx Portrait - faded overlay */}
         <div 
           className={`marx-overlay absolute inset-0 bg-center bg-no-repeat bg-contain opacity-0 transition-opacity duration-[2000ms] ${
             isLoaded ? 'opacity-10' : ''
           }`}
           style={{
-            backgroundImage: "url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2260%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 fill=%22%23fff%22 opacity=%220.3%22%3EMarx%3C/text%3E%3C/svg%3E')",
-            // Thay thế bằng: backgroundImage: "url('/images/karl-marx-portrait.png')"
+            backgroundImage: "url('/images/karl-marx-portrait.png')"
           }}
         ></div>
 
@@ -136,12 +130,18 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-16">
-          <button className="cta-button cta-primary group">
-            <span className="relative z-10">BẮT ĐẦU KHÁM PHÁ</span>
+          <button 
+            className="cta-button cta-primary group"
+            onClick={() => setActiveTab('case-study')}
+          >
+            <span className="relative z-10">Tìm Hiểu Case Study</span>
             <div className="cta-shine"></div>
           </button>
-          <button className="cta-button cta-secondary group">
-            <span className="relative z-10">CHƠI MINIGAME</span>
+          <button 
+            className="cta-button cta-secondary group"
+            onClick={() => setActiveTab('minigame')}
+          >
+            <span className="relative z-10">Chơi Minigame</span>
             <div className="cta-shine"></div>
           </button>
         </div>

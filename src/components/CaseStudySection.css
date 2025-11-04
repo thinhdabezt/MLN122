@@ -100,6 +100,9 @@
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .case-card:hover .case-image-container {

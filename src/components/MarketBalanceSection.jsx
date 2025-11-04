@@ -1,8 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Scale, TrendingUp, Users, ShieldCheck, Award, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
-import './MarketBalanceSection.css';
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Scale,
+  TrendingUp,
+  Users,
+  ShieldCheck,
+  Award,
+  AlertCircle,
+  CheckCircle,
+  XCircle,
+} from "lucide-react";
+import "./MarketBalanceSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +21,7 @@ const MarketBalanceSection = () => {
   const [sliderValues, setSliderValues] = useState({
     market: 50,
     state: 50,
-    welfare: 50
+    welfare: 50,
   });
   const [balanceStatus, setBalanceStatus] = useState(null);
   const [showResult, setShowResult] = useState(false);
@@ -20,38 +29,38 @@ const MarketBalanceSection = () => {
   // Animation on scroll
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.balance-header', {
+      gsap.from(".balance-header", {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: "top 80%",
         },
         y: 50,
         opacity: 0,
         duration: 0.8,
-        ease: 'power3.out'
+        ease: "power3.out",
       });
 
-      gsap.from('.slider-control', {
+      gsap.from(".slider-control", {
         scrollTrigger: {
-          trigger: '.sliders-container',
-          start: 'top 80%',
+          trigger: ".sliders-container",
+          start: "top 80%",
         },
         x: -50,
         opacity: 0,
         duration: 0.6,
         stagger: 0.15,
-        ease: 'power3.out'
+        ease: "power3.out",
       });
 
-      gsap.from('.balance-chart-container', {
+      gsap.from(".balance-chart-container", {
         scrollTrigger: {
-          trigger: '.balance-chart-container',
-          start: 'top 80%',
+          trigger: ".balance-chart-container",
+          start: "top 80%",
         },
         scale: 0.9,
         opacity: 0,
         duration: 0.8,
-        ease: 'back.out(1.7)'
+        ease: "back.out(1.7)",
       });
     }, sectionRef);
 
@@ -61,21 +70,25 @@ const MarketBalanceSection = () => {
   // Update chart bars when sliders change
   useEffect(() => {
     if (chartRef.current) {
-      gsap.to('.chart-bar', {
+      gsap.to(".chart-bar", {
         height: (index) => {
-          const values = [sliderValues.market, sliderValues.state, sliderValues.welfare];
+          const values = [
+            sliderValues.market,
+            sliderValues.state,
+            sliderValues.welfare,
+          ];
           return `${values[index] * 2.5}px`;
         },
         duration: 0.4,
-        ease: 'power2.out'
+        ease: "power2.out",
       });
     }
   }, [sliderValues]);
 
   const handleSliderChange = (key, value) => {
-    setSliderValues(prev => ({
+    setSliderValues((prev) => ({
       ...prev,
-      [key]: parseInt(value)
+      [key]: parseInt(value),
     }));
     setShowResult(false);
 
@@ -85,7 +98,8 @@ const MarketBalanceSection = () => {
 
   const playSliderSound = () => {
     // Tạo âm thanh nhẹ khi kéo slider
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioContext = new (window.AudioContext ||
+      window.webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
@@ -93,9 +107,12 @@ const MarketBalanceSection = () => {
     gainNode.connect(audioContext.destination);
 
     oscillator.frequency.value = 800;
-    oscillator.type = 'sine';
+    oscillator.type = "sine";
     gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    gainNode.gain.exponentialRampToValueAtTime(
+      0.01,
+      audioContext.currentTime + 0.1
+    );
 
     oscillator.start(audioContext.currentTime);
     oscillator.stop(audioContext.currentTime + 0.1);
@@ -103,7 +120,8 @@ const MarketBalanceSection = () => {
 
   const playBalanceSound = () => {
     // Âm thanh khi đạt cân bằng
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioContext = new (window.AudioContext ||
+      window.webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
@@ -111,9 +129,12 @@ const MarketBalanceSection = () => {
     gainNode.connect(audioContext.destination);
 
     oscillator.frequency.value = 523.25; // Note C5
-    oscillator.type = 'sine';
+    oscillator.type = "sine";
     gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+    gainNode.gain.exponentialRampToValueAtTime(
+      0.01,
+      audioContext.currentTime + 0.5
+    );
 
     oscillator.start(audioContext.currentTime);
     oscillator.stop(audioContext.currentTime + 0.5);
@@ -121,28 +142,29 @@ const MarketBalanceSection = () => {
 
   const checkBalance = () => {
     const { market, state, welfare } = sliderValues;
-    
+
     // Tính điểm cân bằng dựa trên mô hình XHCN Việt Nam
     // Tối ưu: Market ~50-70, State ~40-60, Welfare ~50-70
     const marketScore = Math.abs(market - 60) < 15 ? 1 : 0;
     const stateScore = Math.abs(state - 50) < 15 ? 1 : 0;
     const welfareScore = Math.abs(welfare - 60) < 15 ? 1 : 0;
-    
+
     const totalScore = marketScore + stateScore + welfareScore;
 
     let status = null;
     if (totalScore === 3) {
       status = {
-        type: 'perfect',
+        type: "perfect",
         icon: CheckCircle,
-        title: 'Hoàn hảo! Cân bằng XHCN đạt mức tối ưu! 🎉',
-        message: 'Bạn đã tạo ra một mô hình kinh tế thị trường định hướng xã hội chủ nghĩa cân bằng, phù hợp với con đường của Việt Nam.',
-        color: '#10B981',
+        title: "Hoàn hảo! Cân bằng XHCN đạt mức tối ưu! 🎉",
+        message:
+          "Bạn đã tạo ra một mô hình kinh tế thị trường định hướng xã hội chủ nghĩa cân bằng, phù hợp với con đường của Việt Nam.",
+        color: "#10B981",
         details: [
-          '✅ Thị trường tự do đủ để kích thích tăng trưởng',
-          '✅ Nhà nước định hướng hiệu quả',
-          '✅ Phúc lợi xã hội được đảm bảo'
-        ]
+          "✅ Thị trường tự do đủ để kích thích tăng trưởng",
+          "✅ Nhà nước định hướng hiệu quả",
+          "✅ Phúc lợi xã hội được đảm bảo",
+        ],
       };
       playBalanceSound();
       // Hiệu ứng rung nhẹ
@@ -151,21 +173,22 @@ const MarketBalanceSection = () => {
       }
     } else if (totalScore === 2) {
       status = {
-        type: 'good',
+        type: "good",
         icon: AlertCircle,
-        title: 'Gần đạt! Cần điều chỉnh nhẹ',
-        message: 'Mô hình của bạn đang tiến gần đến cân bằng XHCN. Hãy tinh chỉnh thêm!',
-        color: '#F59E0B',
-        details: getAdjustmentTips(market, state, welfare)
+        title: "Gần đạt! Cần điều chỉnh nhẹ",
+        message:
+          "Mô hình của bạn đang tiến gần đến cân bằng XHCN. Hãy tinh chỉnh thêm!",
+        color: "#F59E0B",
+        details: getAdjustmentTips(market, state, welfare),
       };
     } else {
       status = {
-        type: 'imbalance',
+        type: "imbalance",
         icon: XCircle,
-        title: 'Chưa cân bằng - Cần điều chỉnh',
-        message: 'Mô hình này có thể gây mất cân bằng kinh tế - xã hội.',
-        color: '#EF4444',
-        details: getAdjustmentTips(market, state, welfare)
+        title: "Chưa cân bằng - Cần điều chỉnh",
+        message: "Mô hình này có thể gây mất cân bằng kinh tế - xã hội.",
+        color: "#EF4444",
+        details: getAdjustmentTips(market, state, welfare),
       };
     }
 
@@ -173,39 +196,39 @@ const MarketBalanceSection = () => {
     setShowResult(true);
 
     // Animate result popup
-    gsap.from('.balance-result', {
+    gsap.from(".balance-result", {
       scale: 0.5,
       opacity: 0,
       duration: 0.5,
-      ease: 'back.out(1.7)'
+      ease: "back.out(1.7)",
     });
   };
 
   const getAdjustmentTips = (market, state, welfare) => {
     const tips = [];
-    
+
     if (market < 45) {
-      tips.push('⚠️ Thị trường quá hạn chế → Thiếu động lực tăng trưởng');
+      tips.push("⚠️ Thị trường quá hạn chế → Thiếu động lực tăng trưởng");
     } else if (market > 75) {
-      tips.push('⚠️ Thị trường quá tự do → Nguy cơ bất bình đẳng cao');
+      tips.push("⚠️ Thị trường quá tự do → Nguy cơ bất bình đẳng cao");
     } else {
-      tips.push('✅ Tự do thị trường ở mức hợp lý');
+      tips.push("✅ Tự do thị trường ở mức hợp lý");
     }
 
     if (state < 35) {
-      tips.push('⚠️ Nhà nước quản lý yếu → Thiếu định hướng');
+      tips.push("⚠️ Nhà nước quản lý yếu → Thiếu định hướng");
     } else if (state > 65) {
-      tips.push('⚠️ Nhà nước can thiệp quá mức → Kìm hãm sáng tạo');
+      tips.push("⚠️ Nhà nước can thiệp quá mức → Kìm hãm sáng tạo");
     } else {
-      tips.push('✅ Quản lý Nhà nước ở mức phù hợp');
+      tips.push("✅ Quản lý Nhà nước ở mức phù hợp");
     }
 
     if (welfare < 45) {
-      tips.push('⚠️ Phúc lợi xã hội thấp → Thiếu công bằng');
+      tips.push("⚠️ Phúc lợi xã hội thấp → Thiếu công bằng");
     } else if (welfare > 75) {
-      tips.push('⚠️ Phúc lợi quá cao → Nguy cơ gánh nặng ngân sách');
+      tips.push("⚠️ Phúc lợi quá cao → Nguy cơ gánh nặng ngân sách");
     } else {
-      tips.push('✅ Phúc lợi xã hội đảm bảo hài hòa');
+      tips.push("✅ Phúc lợi xã hội đảm bảo hài hòa");
     }
 
     return tips;
@@ -215,7 +238,7 @@ const MarketBalanceSection = () => {
     setSliderValues({
       market: 50,
       state: 50,
-      welfare: 50
+      welfare: 50,
     });
     setShowResult(false);
     setBalanceStatus(null);
@@ -226,7 +249,7 @@ const MarketBalanceSection = () => {
     const presets = {
       capitalism: { market: 85, state: 25, welfare: 35 },
       socialism: { market: 30, state: 85, welfare: 75 },
-      vietnam: { market: 60, state: 50, welfare: 60 }
+      vietnam: { market: 60, state: 50, welfare: 60 },
     };
 
     setSliderValues(presets[preset]);
@@ -234,39 +257,52 @@ const MarketBalanceSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="market-balance-section py-20 px-4 md:px-8 relative">
+    <section
+      ref={sectionRef}
+      className="market-balance-section py-20 px-4 md:px-8 relative"
+      // style={{
+      //   backgroundImage: "url('/images/market-balance-bg.jpg')",
+      //   backgroundSize: 'cover',
+      //   backgroundPosition: 'center'
+      // }}
+    >
       <div className="max-w-7xl mx-auto">
-        
         {/* Header */}
         <div className="balance-header text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Scale className="w-12 h-12 text-soft-gold" />
             <h2 className="text-4xl md:text-5xl font-bold text-white">
-              Kinh tế thị trường định hướng <span className="text-gradient bg-gradient-to-r from-soft-gold to-red-earth bg-clip-text text-transparent">XHCN</span>
+              Kinh tế thị trường định hướng{" "}
+              <span className="text-gradient bg-gradient-to-r from-soft-gold to-red-earth bg-clip-text text-transparent">
+                XHCN
+              </span>
             </h2>
           </div>
           <p className="text-xl text-smoke-gray font-serif italic">
             Tăng trưởng – Công bằng – Ổn định
           </p>
           <p className="mt-4 text-smoke-gray max-w-3xl mx-auto leading-relaxed">
-            Không phải tư bản thuần túy, không phải kế hoạch hóa tập trung. 
-            Việt Nam chọn con đường kết hợp hài hòa: <strong className="text-soft-gold">thị trường tự do + định hướng Nhà nước + phúc lợi xã hội</strong>.
+            Không phải tư bản thuần túy, không phải kế hoạch hóa tập trung. Việt
+            Nam chọn con đường kết hợp hài hòa:{" "}
+            <strong className="text-soft-gold">
+              thị trường tự do + định hướng Nhà nước + phúc lợi xã hội
+            </strong>
+            .
           </p>
         </div>
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          
           {/* Left: Interactive Sliders */}
           <div className="sliders-container">
             <div className="sliders-wrapper bg-gradient-to-br from-gray-900/80 to-gray-800/90 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
-              
               <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
                 <TrendingUp className="w-6 h-6 text-soft-gold" />
                 Điều chỉnh các yếu tố
               </h3>
               <p className="text-smoke-gray mb-8 text-sm">
-                Thử nghiệm các mô hình kinh tế khác nhau bằng cách điều chỉnh ba yếu tố chính
+                Thử nghiệm các mô hình kinh tế khác nhau bằng cách điều chỉnh ba
+                yếu tố chính
               </p>
 
               {/* Slider 1: Tự do thị trường */}
@@ -276,14 +312,16 @@ const MarketBalanceSection = () => {
                     <TrendingUp className="w-5 h-5 text-blue-400" />
                     Tự do thị trường
                   </label>
-                  <span className="text-soft-gold font-bold text-lg">{sliderValues.market}%</span>
+                  <span className="text-soft-gold font-bold text-lg">
+                    {sliderValues.market}%
+                  </span>
                 </div>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   value={sliderValues.market}
-                  onChange={(e) => handleSliderChange('market', e.target.value)}
+                  onChange={(e) => handleSliderChange("market", e.target.value)}
                   className="slider market-slider"
                 />
                 <div className="flex justify-between text-xs text-smoke-gray mt-2">
@@ -299,14 +337,16 @@ const MarketBalanceSection = () => {
                     <ShieldCheck className="w-5 h-5 text-red-400" />
                     Quản lý Nhà nước
                   </label>
-                  <span className="text-soft-gold font-bold text-lg">{sliderValues.state}%</span>
+                  <span className="text-soft-gold font-bold text-lg">
+                    {sliderValues.state}%
+                  </span>
                 </div>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   value={sliderValues.state}
-                  onChange={(e) => handleSliderChange('state', e.target.value)}
+                  onChange={(e) => handleSliderChange("state", e.target.value)}
                   className="slider state-slider"
                 />
                 <div className="flex justify-between text-xs text-smoke-gray mt-2">
@@ -322,14 +362,18 @@ const MarketBalanceSection = () => {
                     <Users className="w-5 h-5 text-green-400" />
                     Phúc lợi xã hội
                   </label>
-                  <span className="text-soft-gold font-bold text-lg">{sliderValues.welfare}%</span>
+                  <span className="text-soft-gold font-bold text-lg">
+                    {sliderValues.welfare}%
+                  </span>
                 </div>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   value={sliderValues.welfare}
-                  onChange={(e) => handleSliderChange('welfare', e.target.value)}
+                  onChange={(e) =>
+                    handleSliderChange("welfare", e.target.value)
+                  }
                   className="slider welfare-slider"
                 />
                 <div className="flex justify-between text-xs text-smoke-gray mt-2">
@@ -357,22 +401,24 @@ const MarketBalanceSection = () => {
 
               {/* Preset Models */}
               <div className="preset-models">
-                <p className="text-smoke-gray text-sm mb-3">Hoặc thử các mô hình mẫu:</p>
+                <p className="text-smoke-gray text-sm mb-3">
+                  Hoặc thử các mô hình mẫu:
+                </p>
                 <div className="grid grid-cols-3 gap-2">
                   <button
-                    onClick={() => applyPreset('capitalism')}
+                    onClick={() => applyPreset("capitalism")}
                     className="preset-btn bg-blue-900/40 hover:bg-blue-800/60 text-blue-200 py-2 px-3 rounded-lg text-xs font-semibold transition-all"
                   >
                     Tư bản
                   </button>
                   <button
-                    onClick={() => applyPreset('socialism')}
+                    onClick={() => applyPreset("socialism")}
                     className="preset-btn bg-red-900/40 hover:bg-red-800/60 text-red-200 py-2 px-3 rounded-lg text-xs font-semibold transition-all"
                   >
                     XHCN cổ điển
                   </button>
                   <button
-                    onClick={() => applyPreset('vietnam')}
+                    onClick={() => applyPreset("vietnam")}
                     className="preset-btn bg-yellow-900/40 hover:bg-yellow-800/60 text-yellow-200 py-2 px-3 rounded-lg text-xs font-semibold transition-all"
                   >
                     Việt Nam
@@ -384,50 +430,65 @@ const MarketBalanceSection = () => {
 
           {/* Right: Real-time Bar Chart */}
           <div className="balance-chart-container">
-            <div ref={chartRef} className="chart-wrapper bg-gradient-to-br from-gray-900/80 to-gray-800/90 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
+            <div
+              ref={chartRef}
+              className="chart-wrapper bg-gradient-to-br from-gray-900/80 to-gray-800/90 p-8 rounded-3xl border border-white/10 backdrop-blur-sm"
+            >
               <h3 className="text-2xl font-bold text-white mb-6 text-center">
                 Biểu đồ cân bằng động
               </h3>
-              
+
               {/* Bar Chart */}
               <div className="chart-bars flex items-end justify-around gap-6 h-[300px] mb-8">
                 <div className="chart-bar-wrapper flex flex-col items-center">
                   <div className="chart-bar-container relative w-20 h-full flex items-end">
-                    <div 
+                    <div
                       className="chart-bar market-bar w-full bg-gradient-to-t from-blue-500 to-blue-400 rounded-t-xl transition-all duration-400 relative"
                       style={{ height: `${sliderValues.market * 2.5}px` }}
                     >
                       <div className="bar-glow"></div>
                     </div>
                   </div>
-                  <p className="text-white font-semibold mt-3 text-center text-sm">Thị trường</p>
-                  <p className="text-soft-gold font-bold text-lg">{sliderValues.market}%</p>
+                  <p className="text-white font-semibold mt-3 text-center text-sm">
+                    Thị trường
+                  </p>
+                  <p className="text-soft-gold font-bold text-lg">
+                    {sliderValues.market}%
+                  </p>
                 </div>
 
                 <div className="chart-bar-wrapper flex flex-col items-center">
                   <div className="chart-bar-container relative w-20 h-full flex items-end">
-                    <div 
+                    <div
                       className="chart-bar state-bar w-full bg-gradient-to-t from-red-500 to-red-400 rounded-t-xl transition-all duration-400 relative"
                       style={{ height: `${sliderValues.state * 2.5}px` }}
                     >
                       <div className="bar-glow"></div>
                     </div>
                   </div>
-                  <p className="text-white font-semibold mt-3 text-center text-sm">Nhà nước</p>
-                  <p className="text-soft-gold font-bold text-lg">{sliderValues.state}%</p>
+                  <p className="text-white font-semibold mt-3 text-center text-sm">
+                    Nhà nước
+                  </p>
+                  <p className="text-soft-gold font-bold text-lg">
+                    {sliderValues.state}%
+                  </p>
                 </div>
 
                 <div className="chart-bar-wrapper flex flex-col items-center">
                   <div className="chart-bar-container relative w-20 h-full flex items-end">
-                    <div 
+                    <div
                       className="chart-bar welfare-bar w-full bg-gradient-to-t from-green-500 to-green-400 rounded-t-xl transition-all duration-400 relative"
                       style={{ height: `${sliderValues.welfare * 2.5}px` }}
                     >
                       <div className="bar-glow"></div>
                     </div>
                   </div>
-                  <p className="text-white font-semibold mt-3 text-center text-sm">Phúc lợi</p>
-                  <p className="text-soft-gold font-bold text-lg">{sliderValues.welfare}%</p>
+                  <p className="text-white font-semibold mt-3 text-center text-sm">
+                    Phúc lợi
+                  </p>
+                  <p className="text-soft-gold font-bold text-lg">
+                    {sliderValues.welfare}%
+                  </p>
                 </div>
               </div>
 
@@ -454,18 +515,29 @@ const MarketBalanceSection = () => {
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Balance Result Popup */}
         {showResult && balanceStatus && (
-          <div className="balance-result mt-12 bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-8 rounded-3xl border-2 backdrop-blur-sm shadow-2xl" style={{ borderColor: balanceStatus.color }}>
+          <div
+            className="balance-result mt-12 bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-8 rounded-3xl border-2 backdrop-blur-sm shadow-2xl"
+            style={{ borderColor: balanceStatus.color }}
+          >
             <div className="flex items-start gap-4">
-              <div className="result-icon p-4 rounded-2xl" style={{ backgroundColor: `${balanceStatus.color}20` }}>
-                <balanceStatus.icon className="w-10 h-10" style={{ color: balanceStatus.color }} />
+              <div
+                className="result-icon p-4 rounded-2xl"
+                style={{ backgroundColor: `${balanceStatus.color}20` }}
+              >
+                <balanceStatus.icon
+                  className="w-10 h-10"
+                  style={{ color: balanceStatus.color }}
+                />
               </div>
               <div className="flex-1">
-                <h3 className="text-2xl font-bold mb-2" style={{ color: balanceStatus.color }}>
+                <h3
+                  className="text-2xl font-bold mb-2"
+                  style={{ color: balanceStatus.color }}
+                >
                   {balanceStatus.title}
                 </h3>
                 <p className="text-smoke-gray mb-4 leading-relaxed">
@@ -473,7 +545,10 @@ const MarketBalanceSection = () => {
                 </p>
                 <div className="details-list space-y-2">
                   {balanceStatus.details.map((detail, index) => (
-                    <p key={index} className="text-white text-sm flex items-start gap-2">
+                    <p
+                      key={index}
+                      className="text-white text-sm flex items-start gap-2"
+                    >
                       <span className="mt-1">•</span>
                       <span>{detail}</span>
                     </p>
@@ -486,15 +561,17 @@ const MarketBalanceSection = () => {
 
         {/* Educational Cards */}
         <div className="educational-cards grid md:grid-cols-3 gap-6 mt-16">
-          
           {/* Card 1: Capitalism */}
           <div className="edu-card bg-gradient-to-br from-blue-900/40 to-blue-800/40 p-6 rounded-2xl border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105">
             <div className="card-icon w-14 h-14 bg-blue-500/30 rounded-xl flex items-center justify-center mb-4">
               <TrendingUp className="w-7 h-7 text-blue-300" />
             </div>
-            <h4 className="text-xl font-bold text-white mb-3">Chủ nghĩa tư bản</h4>
+            <h4 className="text-xl font-bold text-white mb-3">
+              Chủ nghĩa tư bản
+            </h4>
             <p className="text-blue-100 text-sm mb-3 leading-relaxed">
-              <strong>Bàn tay vô hình:</strong> Thị trường tự điều tiết cung-cầu, giá cả.
+              <strong>Bàn tay vô hình:</strong> Thị trường tự điều tiết
+              cung-cầu, giá cả.
             </p>
             <ul className="text-blue-200 text-xs space-y-1">
               <li>✅ Hiệu quả kinh tế cao</li>
@@ -511,7 +588,8 @@ const MarketBalanceSection = () => {
             </div>
             <h4 className="text-xl font-bold text-white mb-3">XHCN cổ điển</h4>
             <p className="text-red-100 text-sm mb-3 leading-relaxed">
-              <strong>Kế hoạch hóa tập trung:</strong> Nhà nước chi phối mọi hoạt động kinh tế.
+              <strong>Kế hoạch hóa tập trung:</strong> Nhà nước chi phối mọi
+              hoạt động kinh tế.
             </p>
             <ul className="text-red-200 text-xs space-y-1">
               <li>✅ Công bằng xã hội cao</li>
@@ -526,9 +604,12 @@ const MarketBalanceSection = () => {
             <div className="card-icon w-14 h-14 bg-yellow-500/30 rounded-xl flex items-center justify-center mb-4">
               <Scale className="w-7 h-7 text-yellow-300" />
             </div>
-            <h4 className="text-xl font-bold text-white mb-3">KTTTĐH XHCN VN</h4>
+            <h4 className="text-xl font-bold text-white mb-3">
+              KTTTĐH XHCN VN
+            </h4>
             <p className="text-yellow-100 text-sm mb-3 leading-relaxed">
-              <strong>Hài hòa 3 yếu tố:</strong> Thị trường + Nhà nước + Phúc lợi.
+              <strong>Hài hòa 3 yếu tố:</strong> Thị trường + Nhà nước + Phúc
+              lợi.
             </p>
             <ul className="text-yellow-200 text-xs space-y-1">
               <li>✅ Tăng trưởng bền vững</li>
@@ -537,14 +618,14 @@ const MarketBalanceSection = () => {
               <li>✅ Phát triển con người</li>
             </ul>
           </div>
-
         </div>
-
       </div>
-
+      {/* Decorative fade overlays - NOTE: Change color here if needed (currently gray-900) */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-900 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10"></div>
       {/* Background Decoration */}
-      <div className="absolute top-1/4 left-10 w-40 h-40 bg-soft-gold/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-10 w-60 h-60 bg-red-earth/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-gray-900 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-gray-900 to-transparent z-10"></div>
     </section>
   );
 };

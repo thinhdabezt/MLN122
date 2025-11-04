@@ -16,6 +16,7 @@ const MiniGameSection = ({ setActiveTab }) => {
       subtitle: 'Ownership Mix',
       description: 'Mô phỏng quản lý kinh tế quốc gia với 3 loại hình sở hữu',
       teaser: 'Điều hành nền kinh tế trong 10 năm: cân bằng sở hữu Nhà nước, Tư nhân, Tập thể để tối ưu năng suất, công bằng và ổn định xã hội.',
+      image: '/images/minigame/ownership-mix-game.jpg',
       imagePlaceholder: 'ownership-mix-game',
       color: '#B53F3F',
       marxQuote: '"Sở hữu tư nhân về tư liệu sản xuất là gốc rễ của bóc lột." - K. Marx',
@@ -37,10 +38,11 @@ const MiniGameSection = ({ setActiveTab }) => {
     {
       id: 'surplus-hunter',
       emoji: '💰',
-      title: 'Lao Động & Giá Trị Thặng Dư',
+      title: 'Lao Động, Giá Trị Thặng Dư',
       subtitle: 'Surplus Hunter',
       description: 'Mô phỏng nhà máy: cân bằng giữa lợi nhuận và công bằng xã hội',
       teaser: 'Điều phối công nhân, lương, tự động hóa để tối đa giá trị thặng dư mà không gây bất ổn xã hội.',
+      image: '/images/minigame/surplus-value-game.jpg',
       imagePlaceholder: 'surplus-value-game',
       color: '#F3C969',
       marxQuote: '"Giá trị thặng dư là nguồn gốc của lợi nhuận tư bản." - K. Marx, Tư bản',
@@ -65,6 +67,7 @@ const MiniGameSection = ({ setActiveTab }) => {
       subtitle: 'Labor Value Challenge',
       description: 'Xác định giá trị sản phẩm theo thời gian lao động xã hội cần thiết',
       teaser: 'Ước lượng giờ công cần thiết để tạo ra sản phẩm – bạn hiểu lý luận Mác đến đâu?',
+      image: '/images/minigame/labor-value-game.jpg',
       imagePlaceholder: 'labor-value-game',
       color: '#8B4513',
       marxQuote: '"Giá trị của hàng hóa được quyết định bởi thời gian lao động xã hội cần thiết." - K. Marx',
@@ -81,30 +84,6 @@ const MiniGameSection = ({ setActiveTab }) => {
         scoring: 'Hệ thống SIÊU DỄ CHỊU: Chính xác 100% = 20đ. Sai lệch 5% = 18.1đ (90.5%), sai lệch 10% = 16.4đ (82%), sai lệch 15% = 14.8đ (74%). Công thức: 20×e^(-sai_lệch/50). Tổng 100 điểm. ⭐⭐⭐⭐⭐ (95+): Marxist chính thống!',
         aiReaction: 'AI Gemini 2.0 phân tích từ góc nhìn Marxist: Bạn có hiểu đúng "thời gian lao động xã hội cần thiết"? Giải thích sai lệch, liên hệ lý thuyết giá trị (giá trị sử dụng vs trao đổi, vai trò máy móc, bóc lột thặng dư). Phản hồi đặc biệt nếu đạt 100% chính xác! ⚠️ Hết giờ = không có AI phân tích.',
         infographic: 'Dashboard với Timer 15s: Sản phẩm ngẫu nhiên → Thông số (CN, giờ, máy) → Sự kiện (nếu có) → Ước tính → Giá trị thực → Sai lệch % → Điểm (e^-formula) → AI phân tích triết học'
-      }
-    },
-    {
-      id: 'guided-market',
-      emoji: '🌏',
-      title: 'Thị Trường Định Hướng XHCN',
-      subtitle: 'The Guided Market',
-      description: 'Điều hành nền kinh tế thị trường định hướng xã hội chủ nghĩa',
-      teaser: 'Điều chỉnh thuế, đầu tư công, tỷ lệ sở hữu nhà nước để cân bằng tăng trưởng và công bằng.',
-      imagePlaceholder: 'guided-market-game',
-      color: '#DC143C',
-      marxQuote: '"Trong giai đoạn quá độ, nhà nước công nhân nắm giữ những ngành then chốt." - V.I. Lenin',
-      tooltip: '🇻🇳 Đầu tư công VN: 5.8% GDP (2023) | Mục tiêu 2030: 7-8% GDP',
-      details: {
-        gameplay: [
-          'Bạn là Thủ tướng nền kinh tế ảo: điều chỉnh 5 công cụ chính sách',
-          '1. Thuế doanh nghiệp (10-35%) | 2. Đầu tư công (3-10% GDP)',
-          '3. Tỷ lệ sở hữu NN (20-60%) | 4. Hỗ trợ doanh nghiệp nhỏ | 5. Kiểm soát giá',
-          'Theo dõi 4 chỉ số: Tăng trưởng GDP, Gini, Thất nghiệp, Nợ công',
-          'Mục tiêu: Đạt GDP +7%, Gini <0.4, Thất nghiệp <3%, Nợ <65% GDP'
-        ],
-        scoring: 'Điểm tổng hợp dựa trên cân bằng 4 chỉ số. Bonus nếu đạt mục tiêu trong 10 bước.',
-        aiReaction: 'AI đánh giá chiến lược của bạn theo mô hình kinh tế thị trường định hướng XHCN của Việt Nam và so sánh với các nước XHCN khác (Trung Quốc, Lào, Cuba).',
-        infographic: 'Dashboard kinh tế với 4 biểu đồ thời gian thực + radar chart cân bằng mục tiêu'
       }
     }
   ];
@@ -138,11 +117,16 @@ const MiniGameSection = ({ setActiveTab }) => {
             className="game-card group"
             style={{ '--game-color': game.color }}
           >
-            {/* Image Placeholder */}
+            {/* Image */}
             <div className="game-image-container">
-              <div className="game-image-placeholder">
-                <span className="game-emoji">{game.emoji}</span>
-                <span className="placeholder-text">{game.imagePlaceholder}</span>
+              <div 
+                className="game-image-placeholder"
+                style={{
+                  backgroundImage: `url('${game.image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              >
               </div>
               {/* Marx Quote Overlay - appears on hover */}
               <div className="marx-quote-overlay">
@@ -217,12 +201,30 @@ const MiniGameSection = ({ setActiveTab }) => {
               <p className="modal-subtitle">{selectedGame.subtitle}</p>
             </div>
 
-            {/* Game Image/Infographic Placeholder */}
+            {/* Game Image/Infographic */}
             <div className="modal-image-container">
-              <div className="modal-image-placeholder">
-                <span className="modal-emoji">{selectedGame.emoji}</span>
-                <p className="modal-image-text">{selectedGame.details.infographic}</p>
-                <span className="placeholder-label">{selectedGame.imagePlaceholder}</span>
+              <div 
+                className="modal-image-placeholder"
+                style={{
+                  backgroundImage: `url('${selectedGame.image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  position: 'relative'
+                }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  left: '10px',
+                  right: '10px',
+                  background: 'rgba(0,0,0,0.7)',
+                  padding: '10px',
+                  borderRadius: '8px'
+                }}>
+                  <p className="modal-image-text" style={{ margin: 0, fontSize: '0.9rem', color: '#fff' }}>
+                    {selectedGame.details.infographic}
+                  </p>
+                </div>
               </div>
             </div>
 

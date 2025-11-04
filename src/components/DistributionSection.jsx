@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  Users, 
-  DollarSign, 
+import { useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Users,
+  DollarSign,
   PiggyBank,
   Heart,
   Building,
@@ -12,9 +12,9 @@ import {
   Hospital,
   Shield,
   Zap,
-  ArrowRight
-} from 'lucide-react';
-import './DistributionSection.css';
+  ArrowRight,
+} from "lucide-react";
+import "./DistributionSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,12 +29,12 @@ const DistributionSection = () => {
     if (flowAnimating) return;
     setFlowAnimating(true);
 
-    const nodes = document.querySelectorAll('.flow-node');
-    const connections = document.querySelectorAll('.flow-connection');
+    const nodes = document.querySelectorAll(".flow-node");
+    const connections = document.querySelectorAll(".flow-connection");
 
     // Reset
-    gsap.set(nodes, { className: '+=flow-node' });
-    gsap.set(connections, { className: '+=flow-connection' });
+    gsap.set(nodes, { className: "+=flow-node" });
+    gsap.set(connections, { className: "+=flow-connection" });
 
     // Animate through each node
     const timeline = gsap.timeline({
@@ -47,9 +47,9 @@ const DistributionSection = () => {
       timeline.to(node, {
         duration: 0.3,
         onStart: () => {
-          node.classList.add('active');
+          node.classList.add("active");
           if (index > 0) {
-            connections[index - 1]?.classList.add('active');
+            connections[index - 1]?.classList.add("active");
           }
         },
       });
@@ -60,105 +60,114 @@ const DistributionSection = () => {
 
   const flowNodes = [
     {
-      id: 'labor',
+      id: "labor",
       icon: <Users className="w-8 h-8 md:w-10 md:h-10" />,
-      title: 'Lao động',
-      subtitle: 'Nguồn gốc giá trị',
-      description: 'Marx: "Lao động là nguồn gốc của mọi giá trị". Người lao động đóng góp sức lao động, tạo ra sản phẩm và dịch vụ.',
+      title: "Lao động",
+      subtitle: "Nguồn gốc giá trị",
+      description:
+        'Marx: "Lao động là nguồn gốc của mọi giá trị". Người lao động đóng góp sức lao động, tạo ra sản phẩm và dịch vụ.',
       examples: [
-        'Công nhân, nông dân, trí thức',
-        'Lao động trực tiếp & gián tiếp',
-        'Lao động chân tay & trí óc',
+        "Công nhân, nông dân, trí thức",
+        "Lao động trực tiếp & gián tiếp",
+        "Lao động chân tay & trí óc",
       ],
-      color: 'from-blue-500 to-cyan-600',
-      bgColor: 'bg-blue-500/10',
+      color: "from-blue-500 to-cyan-600",
+      bgColor: "bg-blue-500/10",
     },
     {
-      id: 'income',
+      id: "income",
       icon: <DollarSign className="w-8 h-8 md:w-10 md:h-10" />,
-      title: 'Thu nhập',
-      subtitle: 'Phân phối theo lao động',
-      description: 'Nguyên tắc XHCN: "Làm theo năng lực, hưởng theo lao động". Thu nhập tương xứng với số lượng và chất lượng lao động.',
+      title: "Thu nhập",
+      subtitle: "Phân phối theo lao động",
+      description:
+        'Nguyên tắc XHCN: "Làm theo năng lực, hưởng theo lao động". Thu nhập tương xứng với số lượng và chất lượng lao động.',
       examples: [
-        'Lương, thưởng, phụ cấp',
-        'Thu nhập từ kinh doanh',
-        'Cổ tức, lợi nhuận',
+        "Lương, thưởng, phụ cấp",
+        "Thu nhập từ kinh doanh",
+        "Cổ tức, lợi nhuận",
       ],
-      color: 'from-green-500 to-emerald-600',
-      bgColor: 'bg-green-500/10',
+      color: "from-green-500 to-emerald-600",
+      bgColor: "bg-green-500/10",
     },
     {
-      id: 'tax',
+      id: "tax",
       icon: <PiggyBank className="w-8 h-8 md:w-10 md:h-10" />,
-      title: 'Thuế & Ngân sách',
-      subtitle: 'Điều tiết phân phối',
-      description: 'Nhà nước thu thuế để điều tiết thu nhập, giảm bất bình đẳng, tạo nguồn lực cho phúc lợi xã hội.',
+      title: "Thuế & Ngân sách",
+      subtitle: "Điều tiết phân phối",
+      description:
+        "Nhà nước thu thuế để điều tiết thu nhập, giảm bất bình đẳng, tạo nguồn lực cho phúc lợi xã hội.",
       examples: [
-        'Thuế thu nhập cá nhân (TNCN)',
-        'Thuế doanh nghiệp',
-        'Thuế gián thu (VAT)',
+        "Thuế thu nhập cá nhân (TNCN)",
+        "Thuế doanh nghiệp",
+        "Thuế gián thu (VAT)",
       ],
-      color: 'from-yellow-500 to-orange-600',
-      bgColor: 'bg-yellow-500/10',
+      color: "from-yellow-500 to-orange-600",
+      bgColor: "bg-yellow-500/10",
     },
     {
-      id: 'welfare',
+      id: "welfare",
       icon: <Heart className="w-8 h-8 md:w-10 md:h-10" />,
-      title: 'Phúc lợi XH',
-      subtitle: 'An sinh & đảm bảo',
-      description: 'Phân phối lại thông qua y tế, giáo dục, bảo hiểm xã hội - đảm bảo công bằng và đời sống tối thiểu cho mọi người.',
+      title: "Phúc lợi XH",
+      subtitle: "An sinh & đảm bảo",
+      description:
+        "Phân phối lại thông qua y tế, giáo dục, bảo hiểm xã hội - đảm bảo công bằng và đời sống tối thiểu cho mọi người.",
       examples: [
-        'Bảo hiểm y tế, xã hội',
-        'Giáo dục công lập',
-        'Trợ cấp người nghèo, khuyết tật',
+        "Bảo hiểm y tế, xã hội",
+        "Giáo dục công lập",
+        "Trợ cấp người nghèo, khuyết tật",
       ],
-      color: 'from-red-500 to-pink-600',
-      bgColor: 'bg-red-500/10',
+      color: "from-red-500 to-pink-600",
+      bgColor: "bg-red-500/10",
     },
     {
-      id: 'investment',
+      id: "investment",
       icon: <Building className="w-8 h-8 md:w-10 md:h-10" />,
-      title: 'Đầu tư công',
-      subtitle: 'Phát triển bền vững',
-      description: 'Đầu tư vào hạ tầng, giáo dục, y tế - tạo điều kiện cho tăng trưởng và phát triển bình đẳng giữa các vùng miền.',
+      title: "Đầu tư công",
+      subtitle: "Phát triển bền vững",
+      description:
+        "Đầu tư vào hạ tầng, giáo dục, y tế - tạo điều kiện cho tăng trưởng và phát triển bình đẳng giữa các vùng miền.",
       examples: [
-        'Hạ tầng giao thông',
-        'Trường học, bệnh viện',
-        'Chính sách vùng miền',
+        "Hạ tầng giao thông",
+        "Trường học, bệnh viện",
+        "Chính sách vùng miền",
       ],
-      color: 'from-purple-500 to-indigo-600',
-      bgColor: 'bg-purple-500/10',
+      color: "from-purple-500 to-indigo-600",
+      bgColor: "bg-purple-500/10",
     },
   ];
 
   const distributionPrinciples = [
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: 'Phân phối theo lao động',
-      description: 'Nguyên tắc cơ bản của CNXH - Marx khẳng định lao động là thước đo phân phối chính đáng.',
+      title: "Phân phối theo lao động",
+      description:
+        "Nguyên tắc cơ bản của CNXH - Marx khẳng định lao động là thước đo phân phối chính đáng.",
       marxQuote: '"Mỗi người đóng góp theo khả năng, h향hưởng theo lao động"',
-      color: 'from-blue-500 to-cyan-600',
+      color: "from-blue-500 to-cyan-600",
     },
     {
       icon: <GraduationCap className="w-8 h-8" />,
-      title: 'Phúc lợi xã hội',
-      description: 'Việt Nam bổ sung: Y tế, giáo dục miễn phí/hỗ trợ - đảm bảo quyền cơ bản cho mọi công dân.',
-      vietnamExample: 'Bảo hiểm y tế toàn dân, miễn học phí tiểu học',
-      color: 'from-green-500 to-emerald-600',
+      title: "Phúc lợi xã hội",
+      description:
+        "Việt Nam bổ sung: Y tế, giáo dục miễn phí/hỗ trợ - đảm bảo quyền cơ bản cho mọi công dân.",
+      vietnamExample: "Bảo hiểm y tế toàn dân, miễn học phí tiểu học",
+      color: "from-green-500 to-emerald-600",
     },
     {
       icon: <Hospital className="w-8 h-8" />,
-      title: 'An sinh xã hội',
-      description: 'Hỗ trợ người yếu thế, giảm nghèo bền vững - thể hiện tính ưu việt của XHCN.',
-      vietnamExample: 'Chương trình giảm nghèo, trợ cấp BHXH',
-      color: 'from-red-500 to-pink-600',
+      title: "An sinh xã hội",
+      description:
+        "Hỗ trợ người yếu thế, giảm nghèo bền vững - thể hiện tính ưu việt của XHCN.",
+      vietnamExample: "Chương trình giảm nghèo, trợ cấp BHXH",
+      color: "from-red-500 to-pink-600",
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: 'Chính sách vùng miền',
-      description: 'Đầu tư ưu tiên vùng khó khăn - thu hẹp khoảng cách giàu nghèo giữa các vùng.',
-      vietnamExample: 'Chương trình 135, NTM, XDCB',
-      color: 'from-purple-500 to-indigo-600',
+      title: "Chính sách vùng miền",
+      description:
+        "Đầu tư ưu tiên vùng khó khăn - thu hẹp khoảng cách giàu nghèo giữa các vùng.",
+      vietnamExample: "Chương trình 135, NTM, XDCB",
+      color: "from-purple-500 to-indigo-600",
     },
   ];
 
@@ -166,6 +175,11 @@ const DistributionSection = () => {
     <section
       ref={sectionRef}
       className="distribution-section min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 py-20 px-6"
+      // style={{
+      //   backgroundImage: "url('/images/distribution-bg.jpg')",
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      // }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -178,16 +192,19 @@ const DistributionSection = () => {
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Từ lao động đến{' '}
+            Từ lao động đến{" "}
             <span className="text-gradient bg-gradient-to-r from-red-earth via-soft-gold to-red-earth bg-clip-text text-transparent">
               phúc lợi
             </span>
           </h2>
 
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-6">
-            Theo Marx, <strong className="text-soft-gold">lao động là cơ sở phân phối</strong>, 
-            nhưng Việt Nam còn bổ sung: phúc lợi xã hội, thuế, ngân sách, 
-            đầu tư công - đảm bảo công bằng trong điều kiện thị trường.
+            Theo Marx,{" "}
+            <strong className="text-soft-gold">
+              lao động là cơ sở phân phối
+            </strong>
+            , nhưng Việt Nam còn bổ sung: phúc lợi xã hội, thuế, ngân sách, đầu
+            tư công - đảm bảo công bằng trong điều kiện thị trường.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
@@ -225,14 +242,16 @@ const DistributionSection = () => {
               <div key={node.id} className="flow-item">
                 {/* Flow Node */}
                 <div
-                  className={`flow-node ${activeNode === node.id ? 'active' : ''}`}
+                  className={`flow-node ${
+                    activeNode === node.id ? "active" : ""
+                  }`}
                   onMouseEnter={() => setActiveNode(node.id)}
                   onMouseLeave={() => setActiveNode(null)}
                   onClick={() => playFlowAnimation()}
                 >
                   <div className={`node-icon bg-gradient-to-br ${node.color}`}>
                     {node.icon}
-                    
+
                     {/* Energy pulse effect */}
                     <div className="energy-pulse"></div>
                   </div>
@@ -249,7 +268,10 @@ const DistributionSection = () => {
                     </p>
                     <div className="space-y-1">
                       {node.examples.map((example, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-xs text-gray-400">
+                        <div
+                          key={idx}
+                          className="flex items-start gap-2 text-xs text-gray-400"
+                        >
                           <span className="text-soft-gold">•</span>
                           <span>{example}</span>
                         </div>
@@ -288,7 +310,9 @@ const DistributionSection = () => {
               className="play-flow-btn"
             >
               <Zap className="w-5 h-5" />
-              <span>{flowAnimating ? 'Đang chạy...' : 'Xem luồng phân phối'}</span>
+              <span>
+                {flowAnimating ? "Đang chạy..." : "Xem luồng phân phối"}
+              </span>
             </button>
           </div>
         </div>
@@ -306,7 +330,9 @@ const DistributionSection = () => {
                 className="principle-card"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`principle-icon bg-gradient-to-br ${principle.color}`}>
+                <div
+                  className={`principle-icon bg-gradient-to-br ${principle.color}`}
+                >
                   {principle.icon}
                 </div>
 
@@ -320,7 +346,9 @@ const DistributionSection = () => {
 
                   {principle.marxQuote && (
                     <div className="marx-mini-quote">
-                      <span className="text-soft-gold text-2xl leading-none">"</span>
+                      <span className="text-soft-gold text-2xl leading-none">
+                        "
+                      </span>
                       <p className="text-xs text-gray-400 italic">
                         {principle.marxQuote}
                       </p>
@@ -357,15 +385,17 @@ const DistributionSection = () => {
                 Mục tiêu: Công bằng xã hội trong kinh tế thị trường
               </h4>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Việt Nam kết hợp phân phối theo lao động (nguyên tắc XHCN) 
-                với các hình thức phân phối khác (phúc lợi, thuế, đầu tư công) 
-                để đảm bảo công bằng xã hội, thu hẹp khoảng cách giàu nghèo, 
-                phát triển bền vững.
+                Việt Nam kết hợp phân phối theo lao động (nguyên tắc XHCN) với
+                các hình thức phân phối khác (phúc lợi, thuế, đầu tư công) để
+                đảm bảo công bằng xã hội, thu hẹp khoảng cách giàu nghèo, phát
+                triển bền vững.
               </p>
               <div className="grid md:grid-cols-3 gap-4 text-sm">
                 <div className="stat-box">
                   <div className="stat-number">~30%</div>
-                  <div className="stat-label">Chi tiêu công cho phúc lợi XH</div>
+                  <div className="stat-label">
+                    Chi tiêu công cho phúc lợi XH
+                  </div>
                 </div>
                 <div className="stat-box">
                   <div className="stat-number">87%</div>
@@ -380,6 +410,9 @@ const DistributionSection = () => {
           </div>
         </div>
       </div>
+      {/* Decorative fade overlays - NOTE: Change color here if needed (currently gray-900) */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-900 to-transparent z-10"></div>{" "}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10"></div>
     </section>
   );
 };

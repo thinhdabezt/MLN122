@@ -9,8 +9,12 @@ const Navigation = ({ activeTab, setActiveTab }) => {
           
           {/* Logo */}
           <div className="logo-container flex items-center gap-3">
-            <div className="logo-icon w-12 h-12 bg-gradient-to-br from-red-earth to-soft-gold rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-xl">M→V</span>
+            <div className="logo-icon w-12 h-12 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+              <img 
+                src="/images/logo.png" 
+                alt="Marx to Vietnam Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="logo-text hidden md:block">
               <h1 className="text-white font-bold text-lg leading-tight">

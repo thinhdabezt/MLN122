@@ -18,10 +18,15 @@
   pointer-events: none;
 }
 
-/* 3D Flip Cards */
+/* ============================================
+   3D FLIP CARDS - OLD METHOD (COMMENTED OUT)
+   Caused layout shift issue
+   ============================================ */
+/*
 .ownership-card-3d {
   perspective: 1000px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 }
 
 .card-inner {
@@ -46,17 +51,75 @@
   padding: 2rem;
   overflow: hidden;
 }
+*/
 
+/* ============================================
+   NEW FADE TRANSITION METHOD
+   Fade out front, fade in back - No layout shift
+   ============================================ */
+
+.ownership-card-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  padding: 2rem;
+  overflow: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* Front card - visible by default */
+.card-front {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Back card - hidden by default */
+.card-back {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+/* On hover: fade out front, fade in back */
+.ownership-card-3d:hover .card-front {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.ownership-card-3d:hover .card-back {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Front card styling */
 .card-front {
   background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(20, 20, 20, 0.95) 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 
+/* Back card styling - no transform needed with fade method */
 .card-back {
-  transform: rotateY(180deg);
   color: white;
 }
 
@@ -272,8 +335,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .ownership-card-3d {
-    height: auto;
-    min-height: 450px;
+    height: 500px; /* Keep fixed height even on mobile */
   }
 
   .card-front,
@@ -315,21 +377,13 @@
   }
 }
 
-/* Tablet - Disable 3D flip, show both sides stacked */
+/* Tablet - Show both front and back stacked */
 @media (max-width: 1024px) and (min-width: 769px) {
-  .ownership-card-3d {
-    height: auto;
-  }
-
-  .card-inner {
-    transform: none !important;
-  }
-
   .card-front,
   .card-back {
     position: relative;
-    transform: none !important;
-    backface-visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
     margin-bottom: 1rem;
   }
 
@@ -338,20 +392,23 @@
   }
 }
 
-/* Touch devices - show back on tap */
+/* Touch devices - toggle on tap */
 @media (hover: none) {
-  .ownership-card-3d {
-    height: auto;
+  .ownership-card-3d.touched .card-front {
+    opacity: 0;
+    visibility: hidden;
   }
 
-  .ownership-card-3d.touched .card-inner {
-    transform: rotateY(180deg);
+  .ownership-card-3d.touched .card-back {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .card-inner,
+  .card-front,
+  .card-back,
   .pie-segment,
   .legend-item,
   .application-card,
@@ -360,8 +417,10 @@
     animation: none;
   }
 
-  .ownership-card-3d:hover .card-inner {
-    transform: none;
+  .ownership-card-3d:hover .card-front,
+  .ownership-card-3d:hover .card-back {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -371,9 +430,11 @@
     display: none;
   }
 
+  .card-front,
   .card-back {
     position: relative;
-    transform: none;
+    opacity: 1 !important;
+    visibility: visible !important;
     page-break-inside: avoid;
   }
 }

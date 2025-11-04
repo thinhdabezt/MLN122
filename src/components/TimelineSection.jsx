@@ -23,7 +23,6 @@ const TimelineSection = () => {
   const timelineRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [currentScroll, setCurrentScroll] = useState(0);
 
   // Timeline data
   const milestones = [
@@ -174,21 +173,7 @@ const TimelineSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollTimeline = (direction) => {
-    if (!timelineRef.current) return;
-    
-    const scrollAmount = 400;
-    const newScroll = direction === 'left' 
-      ? Math.max(0, currentScroll - scrollAmount)
-      : currentScroll + scrollAmount;
-    
-    timelineRef.current.scrollTo({
-      left: newScroll,
-      behavior: 'smooth'
-    });
-    
-    setCurrentScroll(newScroll);
-  };
+  // Horizontal scrolling is handled by the container and year-markers; arrow controls removed.
 
   const openModal = (index) => {
     setActiveIndex(index);
@@ -213,8 +198,24 @@ const TimelineSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="timeline-section py-20 px-4 md:px-8 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section 
+      ref={sectionRef} 
+      className="timeline-section py-20 px-4 md:px-8 relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/timeline/timeline-bg.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/70 z-0"></div>
+      
+      {/* Decorative fade overlays - NOTE: Change color here if needed (currently gray-900) */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-900 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10 pointer-events-none"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-20">{/* Increased z-index to be above fades */}
         
         {/* Header */}
         <div className="timeline-header text-center mb-16">
@@ -232,32 +233,16 @@ const TimelineSection = () => {
         {/* Timeline Container */}
         <div className="timeline-wrapper relative">
           
-          {/* Navigation Buttons */}
-          <button
-            onClick={() => scrollTimeline('left')}
-            className="timeline-nav-btn left-0"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          
-          <button
-            onClick={() => scrollTimeline('right')}
-            className="timeline-nav-btn right-0"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+          {/* Navigation buttons removed per design: simplified horizontal scroll (no arrows) */}
 
           {/* Timeline */}
           <div 
             ref={timelineRef}
             className="timeline-container"
-            onScroll={(e) => setCurrentScroll(e.target.scrollLeft)}
           >
             <div className="timeline-track">
               
-              {/* Timeline Path */}
+              {/* Timeline Path - horizontal gradient line connecting milestones */}
               <div className="timeline-path">
                 <div className="timeline-glow"></div>
               </div>
@@ -319,10 +304,19 @@ const TimelineSection = () => {
               className="year-marker text-center cursor-pointer group"
               onClick={() => {
                 const container = timelineRef.current;
-                const milestoneElements = container.querySelectorAll('.timeline-milestone');
+                const milestoneElements = container.querySelectorAll('.milestone-item');
                 const targetElement = milestoneElements[index];
-                if (targetElement) {
-                  targetElement.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                if (targetElement && container) {
+                  // Calculate scroll position to center the element
+                  const containerWidth = container.offsetWidth;
+                  const elementLeft = targetElement.offsetLeft;
+                  const elementWidth = targetElement.offsetWidth;
+                  const scrollPosition = elementLeft - (containerWidth / 2) + (elementWidth / 2);
+                  
+                  container.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                  });
                 }
               }}
             >
@@ -384,19 +378,15 @@ const TimelineSection = () => {
                 </div>
               </div>
 
-              {/* Image Placeholder */}
+              {/* Image */}
               <div 
                 className="modal-image"
                 style={{
-                  backgroundImage: `linear-gradient(135deg, ${milestones[activeIndex].color}20, ${milestones[activeIndex].color}10)`
+                  backgroundImage: `url('${milestones[activeIndex].image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
                 }}
               >
-                <div className="image-placeholder-icon">
-                  <MapPin className="w-16 h-16 text-smoke-gray/30" />
-                  <p className="text-smoke-gray/50 text-sm mt-2">
-                    Thêm ảnh: {milestones[activeIndex].image}
-                  </p>
-                </div>
               </div>
 
               {/* Description */}

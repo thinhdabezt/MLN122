@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Factory, Building2, Users, X } from 'lucide-react';
 import './CaseStudySection.css';
 
-const CaseStudySection = () => {
+const CaseStudySection = ({ setActiveTab }) => {
   const [selectedCase, setSelectedCase] = useState(null);
 
   const cases = [
@@ -114,11 +114,15 @@ const CaseStudySection = () => {
               className="case-card bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-soft-gold/50 transition-all duration-300 flex flex-col"
             >
               {/* Image */}
-              <div className="case-image-container h-56 relative overflow-hidden bg-gradient-to-br from-red-earth/20 via-soft-gold/10 to-red-earth/20">
-                <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-30">
-                  {caseItem.emoji}
-                </div>
-                <div className="absolute inset-0 bg-black/20"></div>
+              <div 
+                className="case-image-container h-56 relative overflow-hidden"
+                style={{
+                  backgroundImage: `url('${caseItem.image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              >
+                <div className="absolute inset-0 bg-black/30"></div>
                 
                 {/* Marx Quote Overlay - CHỈ hiện trên IMAGE khi hover */}
                 <div className="marx-quote-overlay absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/90 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6 pointer-events-none">
@@ -158,12 +162,12 @@ const CaseStudySection = () => {
           <p className="text-xl text-white font-medium mb-4">
             Bạn hiểu lý thuyết rồi – giờ thử vận dụng nhé!
           </p>
-          <a
-            href="#market-balance"
-            className="inline-block py-3 px-8 bg-gradient-to-r from-soft-gold to-red-earth text-white font-bold rounded-full hover:shadow-lg hover:shadow-soft-gold/50 transition-all duration-300 transform hover:scale-105"
+          <button
+            onClick={() => setActiveTab('minigame')}
+            className="inline-block py-3 px-8 bg-gradient-to-r from-soft-gold to-red-earth text-white font-bold rounded-full hover:shadow-lg hover:shadow-soft-gold/50 transition-all duration-300 transform hover:scale-105 cursor-pointer"
           >
-            Thử Minigame "Balance Builder"
-          </a>
+            Thử Minigame
+          </button>
         </div>
 
       </div>
@@ -225,7 +229,7 @@ const CaseStudySection = () => {
               {/* Ý nghĩa triết học */}
               <div className="philosophy-section bg-gradient-to-r from-gray-700/50 to-gray-800/50 rounded-xl p-6 border border-soft-gold/30">
                 <h4 className="text-xl font-bold text-soft-gold mb-4 flex items-center gap-2">
-                  <span>🎓</span> Ý nghĩa triết học
+                  <span>🎓</span> Ý nghĩa
                 </h4>
                 <ul className="space-y-3">
                   {selectedCase.details.philosophy.map((item, index) => (
