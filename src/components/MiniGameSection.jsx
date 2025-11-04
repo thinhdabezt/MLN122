@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import OwnershipMixGame from './OwnershipMixGame';
 import SurplusHunterGame from './SurplusHunterGame';
+import LaborValueGame from './LaborValueGame';
 import './MiniGameSection.css';
 
 const MiniGameSection = ({ setActiveTab }) => {
@@ -67,17 +68,19 @@ const MiniGameSection = ({ setActiveTab }) => {
       imagePlaceholder: 'labor-value-game',
       color: '#8B4513',
       marxQuote: '"Giá trị của hàng hóa được quyết định bởi thời gian lao động xã hội cần thiết." - K. Marx',
-      tooltip: '⏱️ Thời gian lao động trung bình sản xuất 1 áo sơ mi: 2.5 giờ',
+      tooltip: '⏱️ 15 giây mỗi sản phẩm | Công thức siêu dễ: e^(-x/50)',
       details: {
         gameplay: [
-          'Hiển thị 8 sản phẩm (áo, điện thoại, xe máy, tô phở...)',
-          'Người chơi ước lượng số giờ lao động xã hội cần thiết',
-          'So sánh với giá trị thực tế từ dữ liệu Tổng cục Thống kê',
-          'Giải thích sự chênh lệch: tay nghề, công nghệ, điều kiện sản xuất'
+          'Phân tích 5 sản phẩm NGẪU NHIÊN từ 20 sản phẩm khả dụng (áo, điện thoại, xe, phở, laptop, giày, TV, cà phê, bàn, ô tô, bánh mì, điều hòa, sách, túi, đồng hồ, cốc, gạch, bút, khăn, nồi)',
+          '⏱️ Bạn có 15 GIÂY để đưa ra đáp án cho mỗi sản phẩm (hết giờ = 0 điểm)',
+          'Xem thông tin: Số công nhân, Thời gian lao động, Máy móc hỗ trợ',
+          'Ước tính giá trị thực (tính theo giờ lao động xã hội cần thiết)',
+          'So sánh với công thức Marx: (Giờ × Công nhân) / (1 + Máy × 0.2)',
+          '⚡ 50% khả năng gặp 1 trong 10 sự kiện: khủng hoảng, đình công, tự động hóa, tăng thuế, đột phá, thiếu lao động, tăng nguyên liệu, trợ cấp, giảm giờ, nâng cấp...'
         ],
-        scoring: 'Độ chính xác ±15% = 10 điểm/câu. Tổng 8 câu = 80 điểm tối đa.',
-        aiReaction: 'AI so sánh kết quả của bạn với lý thuyết giá trị lao động và giải thích các yếu tố tác động đến giá cả thực tế (cung-cầu, thương hiệu, độc quyền).',
-        infographic: 'Bảng phân tích chuỗi giá trị: Nguyên liệu → Sản xuất → Phân phối → Bán lẻ'
+        scoring: 'Hệ thống SIÊU DỄ CHỊU: Chính xác 100% = 20đ. Sai lệch 5% = 18.1đ (90.5%), sai lệch 10% = 16.4đ (82%), sai lệch 15% = 14.8đ (74%). Công thức: 20×e^(-sai_lệch/50). Tổng 100 điểm. ⭐⭐⭐⭐⭐ (95+): Marxist chính thống!',
+        aiReaction: 'AI Gemini 2.0 phân tích từ góc nhìn Marxist: Bạn có hiểu đúng "thời gian lao động xã hội cần thiết"? Giải thích sai lệch, liên hệ lý thuyết giá trị (giá trị sử dụng vs trao đổi, vai trò máy móc, bóc lột thặng dư). Phản hồi đặc biệt nếu đạt 100% chính xác! ⚠️ Hết giờ = không có AI phân tích.',
+        infographic: 'Dashboard với Timer 15s: Sản phẩm ngẫu nhiên → Thông số (CN, giờ, máy) → Sự kiện (nếu có) → Ước tính → Giá trị thực → Sai lệch % → Điểm (e^-formula) → AI phân tích triết học'
       }
     },
     {
@@ -259,8 +262,11 @@ const MiniGameSection = ({ setActiveTab }) => {
                   } else if (selectedGame.id === 'surplus-hunter') {
                     setPlayingGame('surplus-hunter');
                     closeModal();
+                  } else if (selectedGame.id === 'labor-value') {
+                    setPlayingGame('labor-value');
+                    closeModal();
                   } else {
-                    alert('Game này đang trong quá trình phát triển. Hiện tại có "Sở Hữu Hỗn Hợp" và "Giá Trị Thặng Dư" khả dụng.');
+                    alert('Game này đang trong quá trình phát triển. Hiện tại có 3 game khả dụng: "Sở Hữu Hỗn Hợp", "Giá Trị Thặng Dư", và "Giá Trị Lao Động".');
                   }
                 }}
               >
@@ -280,6 +286,9 @@ const MiniGameSection = ({ setActiveTab }) => {
       )}
       {playingGame === 'surplus-hunter' && (
         <SurplusHunterGame onClose={() => setPlayingGame(null)} />
+      )}
+      {playingGame === 'labor-value' && (
+        <LaborValueGame onClose={() => setPlayingGame(null)} />
       )}
     </section>
   );
