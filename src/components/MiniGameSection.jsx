@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import OwnershipMixGame from './OwnershipMixGame';
+import SurplusHunterGame from './SurplusHunterGame';
 import './MiniGameSection.css';
 
 const MiniGameSection = ({ setActiveTab }) => {
@@ -37,22 +38,23 @@ const MiniGameSection = ({ setActiveTab }) => {
       emoji: '💰',
       title: 'Lao Động & Giá Trị Thặng Dư',
       subtitle: 'Surplus Hunter',
-      description: 'Điều phối sản xuất để tối ưu giá trị thặng dư',
-      teaser: 'Cân bằng giữa năng suất lao động, chi phí sản xuất và công bằng xã hội.',
+      description: 'Mô phỏng nhà máy: cân bằng giữa lợi nhuận và công bằng xã hội',
+      teaser: 'Điều phối công nhân, lương, tự động hóa để tối đa giá trị thặng dư mà không gây bất ổn xã hội.',
       imagePlaceholder: 'surplus-value-game',
       color: '#F3C969',
       marxQuote: '"Giá trị thặng dư là nguồn gốc của lợi nhuận tư bản." - K. Marx, Tư bản',
-      tooltip: '⚙️ Năng suất lao động VN tăng 5.8%/năm (2015-2023)',
+      tooltip: '⚙️ Mô phỏng: Quản lý nhà máy với 4 biến số kinh tế',
       details: {
         gameplay: [
-          'Quản lý nhà máy ảo: điều chỉnh số lượng công nhân, giờ làm, mức lương',
-          'Theo dõi 3 chỉ số: Giá trị tạo ra, Chi phí lao động, Giá trị thặng dư',
-          'Mục tiêu: Tối đa hóa giá trị thặng dư NHƯNG phải đảm bảo lương tối thiểu',
-          'Hiệu ứng thực tế: nếu lương quá thấp → đình công, năng suất giảm'
+          'Bạn là chủ nhà máy trong nền kinh tế XHCN - thử thách 30 giây',
+          'Điều chỉnh 4 tham số: Số công nhân (0-50), Lương ($0-100), Tự động hóa (0-100%), Tốc độ làm việc (0-200%)',
+          'Hệ thống tính toán: Giá trị sản xuất, Chi phí lao động, Giá trị thặng dư, Mức bất bình đẳng',
+          'Tác động thực tế: Tự động hóa cao → thất nghiệp tăng, Lương thấp → bóc lột lao động',
+          'Mục tiêu: Thặng dư > $1500 + Bất bình đẳng < 25% + Lương ≥ $70 = Điểm cao'
         ],
-        scoring: 'Điểm cân bằng = (Lợi nhuận × 0.6) + (Phúc lợi công nhân × 0.4). Tối đa 100 điểm.',
-        aiReaction: 'AI phân tích quyết định của bạn theo 3 góc độ: Tư bản chủ nghĩa, Chủ nghĩa xã hội, và Kinh tế thị trường định hướng XHCN.',
-        infographic: 'Công thức Marx: m\' = m/v (tỷ suất giá trị thặng dư) với biểu đồ minh họa'
+        scoring: 'Hệ thống chấm điểm thách thức: Production (30pts - surplus >$2000), Inequality (35pts - <15%), Balance (20pts - cả hai), Welfare (15pts - wage ≥$70). Penalty nghiêm khắc. Đạt 85+ điểm = Lý tưởng XHCN!',
+        aiReaction: 'AI Gemini 2.0 phân tích theo lý thuyết Marx về giá trị thặng dư (m/v), đánh giá mức độ bóc lột lao động, tác động xã hội của tự động hóa, và đề xuất điều chỉnh cụ thể với SỐ LIỆU CHÍNH XÁC.',
+        infographic: 'Dashboard nhà máy với Timer 30s: Sliders điều khiển + Kết quả kinh tế + Biểu đồ bất bình đẳng + AI phân tích'
       }
     },
     {
@@ -254,8 +256,11 @@ const MiniGameSection = ({ setActiveTab }) => {
                   if (selectedGame.id === 'ownership-mix') {
                     setPlayingGame('ownership-mix');
                     closeModal();
+                  } else if (selectedGame.id === 'surplus-hunter') {
+                    setPlayingGame('surplus-hunter');
+                    closeModal();
                   } else {
-                    alert('Game này đang trong quá trình phát triển. Hiện tại chỉ có "Sở Hữu Hỗn Hợp" khả dụng.');
+                    alert('Game này đang trong quá trình phát triển. Hiện tại có "Sở Hữu Hỗn Hợp" và "Giá Trị Thặng Dư" khả dụng.');
                   }
                 }}
               >
@@ -272,6 +277,9 @@ const MiniGameSection = ({ setActiveTab }) => {
       {/* Render Actual Game */}
       {playingGame === 'ownership-mix' && (
         <OwnershipMixGame onClose={() => setPlayingGame(null)} />
+      )}
+      {playingGame === 'surplus-hunter' && (
+        <SurplusHunterGame onClose={() => setPlayingGame(null)} />
       )}
     </section>
   );
