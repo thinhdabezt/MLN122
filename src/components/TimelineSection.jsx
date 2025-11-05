@@ -40,7 +40,7 @@ const TimelineSection = () => {
         'Mở cửa hội nhập kinh tế quốc tế',
         'Phá bỏ bao cấp, khuyến khích sản xuất'
       ],
-      marxTheory: 'Vận dụng linh hoạt lý luận Marx về sở hữu và phân phối, không giáo조교条, phù hợp với điều kiện Việt Nam.',
+      marxTheory: 'Vận dụng linh hoạt lý luận Marx về sở hữu và phân phối, không giáo điều, phù hợp với điều kiện Việt Nam.',
       impact: 'GDP tăng trưởng từ âm sang dương, thoát khỏi khủng hoảng kinh tế - xã hội.'
     },
     {
@@ -61,13 +61,13 @@ const TimelineSection = () => {
       impact: 'Tạo khung pháp lý vững chắc cho phát triển kinh tế - xã hội bền vững.'
     },
     {
-      year: 2000,
+      year: 2007,
       title: 'Hội nhập WTO',
       subtitle: 'Bước tiến toàn cầu',
       icon: TrendingUp,
       color: '#10B981',
       image: '/images/timeline/wto-2007.jpg',
-      description: 'Việt Nam gia nhập WTO (2007), đánh dấu hội nhập sâu rộng vào nền kinh tế toàn cầu. Kinh tế tư nhân và FDI bùng nổ, song vẫn giữ định hướng xã hội chủ nghĩa.',
+      description: 'Việt Nam chính thức gia nhập WTO ngày 11/1/2007, đánh dấu hội nhập sâu rộng vào nền kinh tế toàn cầu. Kinh tế tư nhân và FDI bùng nổ, song vẫn giữ định hướng xã hội chủ nghĩa.',
       highlights: [
         'Mở cửa thị trường, thu hút FDI',
         'Kinh tế tư nhân chiếm 40% GDP',

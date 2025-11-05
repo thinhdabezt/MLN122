@@ -485,10 +485,10 @@ Giữ ngắn gọn, KHÔNG quá 3 câu!`;
         fallback += '⚠️ Ổn định xã hội đang bị đe dọa nghiêm trọng! ';
       }
       if (effects.equity && effects.equity < -10) {
-        fallback += '� Khoảng cách giàu nghèo đang tăng nhanh. ';
+        fallback += '📉 Khoảng cách giàu nghèo đang tăng nhanh. ';
       }
       if (effects.budget && effects.budget < -300) {
-        fallback += '� Ngân sách cạn kiệt, cần thận trọng! ';
+        fallback += '💸 Ngân sách cạn kiệt, cần thận trọng! ';
       }
       
       // Positive highlights
@@ -988,6 +988,19 @@ Giữ trong 5 câu, súc tích và sắc bén!`;
             <div className="ai-comment">
               <h4>🤖 Nhận xét AI</h4>
               <p>{aiComment}</p>
+              <div className="ai-disclaimer" style={{
+                marginTop: '12px',
+                padding: '8px 12px',
+                background: 'rgba(255, 193, 7, 0.1)',
+                border: '1px solid rgba(255, 193, 7, 0.3)',
+                borderRadius: '6px',
+                fontSize: '12px',
+                color: '#FFB74D',
+                fontStyle: 'italic'
+              }}>
+                ⚠️ <strong>Lưu ý:</strong> Nhận xét này được tạo bởi AI (Gemini/ChatGPT) và chỉ mang tính tham khảo. 
+                Vui lòng tự kiểm chứng với lý thuyết Marx gốc.
+              </div>
             </div>
           )}
           

@@ -121,6 +121,20 @@ const ReferencesSection = () => {
                 <strong>Mức độ sử dụng:</strong> Tổng hợp thông tin từ 11 nguồn học thuật, được tôi kiểm chứng và bổ sung.
               </p>
             </div>
+
+            <div className="reference-card">
+              <div className="card-header">
+                <h4 className="card-title">Google Gemini</h4>
+                <span className="card-badge ai-badge">AI Analysis</span>
+              </div>
+              <p className="card-description">
+                <strong>Vai trò:</strong> Phân tích kết quả mini-games từ góc nhìn lý thuyết Marx, đưa ra nhận xét về giá trị lao động và giá trị thặng dư.
+              </p>
+              <p className="card-description mt-2">
+                <strong>Mức độ sử dụng:</strong> Tạo nhận xét tự động trong 3 mini-games (Labor Value, Surplus Hunter, Ownership Mix). 
+                <span style={{color: '#FFB74D', fontStyle: 'italic'}}> Tất cả nhận xét AI chỉ mang tính tham khảo.</span>
+              </p>
+            </div>
           </div>
         </div>
 

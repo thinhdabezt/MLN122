@@ -870,6 +870,19 @@ Trả lời TIẾNG VIỆT, phong cách triết học nhưng dễ hiểu, kết 
                         <p key={idx}>{line}</p>
                       ))}
                     </div>
+                    <div className="ai-disclaimer" style={{
+                      marginTop: '12px',
+                      padding: '8px 12px',
+                      background: 'rgba(255, 193, 7, 0.1)',
+                      border: '1px solid rgba(255, 193, 7, 0.3)',
+                      borderRadius: '6px',
+                      fontSize: '12px',
+                      color: '#FFB74D',
+                      fontStyle: 'italic'
+                    }}>
+                      ⚠️ <strong>Lưu ý:</strong> Nhận xét này được tạo bởi AI (Gemini/ChatGPT) và chỉ mang tính tham khảo. 
+                      Vui lòng tự kiểm chứng với lý thuyết Marx gốc.
+                    </div>
                   </div>
                 )}
               </div>

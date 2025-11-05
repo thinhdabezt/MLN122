@@ -142,7 +142,7 @@ const DistributionSection = () => {
       title: "Phân phối theo lao động",
       description:
         "Nguyên tắc cơ bản của CNXH - Marx khẳng định lao động là thước đo phân phối chính đáng.",
-      marxQuote: '"Mỗi người đóng góp theo khả năng, h향hưởng theo lao động"',
+      marxQuote: '"Mỗi người đóng góp theo khả năng, hưởng theo lao động"',
       color: "from-blue-500 to-cyan-600",
     },
     {

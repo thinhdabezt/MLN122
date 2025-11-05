@@ -570,6 +570,19 @@ Lưu ý:
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>
+                  <div className="ai-disclaimer" style={{
+                    marginTop: '16px',
+                    padding: '10px 14px',
+                    background: 'rgba(255, 193, 7, 0.1)',
+                    border: '1px solid rgba(255, 193, 7, 0.3)',
+                    borderRadius: '6px',
+                    fontSize: '13px',
+                    color: '#FFB74D',
+                    fontStyle: 'italic'
+                  }}>
+                    ⚠️ <strong>Lưu ý:</strong> Nhận xét này được tạo bởi AI (Gemini/ChatGPT) và chỉ mang tính tham khảo. 
+                    Vui lòng tự kiểm chứng với lý thuyết Marx gốc.
+                  </div>
                 </div>
               )}
               

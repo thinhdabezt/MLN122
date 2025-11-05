@@ -216,7 +216,7 @@ const CaseStudySection = ({ setActiveTab }) => {
 
               {/* Nội dung chi tiết */}
               <div>
-                <h4 className="text-xl font-bold text-soft-gold mb-4">� Nội dung chi tiết</h4>
+                <h4 className="text-xl font-bold text-soft-gold mb-4">📋 Nội dung chi tiết</h4>
                 <div className="space-y-4">
                   {selectedCase.details.content.map((paragraph, index) => (
                     <p key={index} className="text-smoke-gray leading-relaxed text-base">
