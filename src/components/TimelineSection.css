@@ -4,6 +4,25 @@
   position: relative;
   background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
   overflow: hidden;
+  min-height: 100vh;
+}
+
+/* CRITICAL: Prevent FOUC for year markers */
+.year-markers {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: flex !important;
+}
+
+.year-marker {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.year-dot {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
 }
 
 /* Text Gradient Animation */
@@ -715,15 +734,125 @@
   color: #ECECEC !important;
 }
 
-/* Year Markers Styles */
+/* ========================================
+   NEW SIMPLE TIMELINE NAVIGATION (NO FLASH)
+   ======================================== */
+
+.timeline-navigation-simple {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 1rem;
+  border: 2px solid rgba(243, 201, 105, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-instruction {
+  text-align: center;
+  color: #F3C969;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.instruction-icon {
+  font-size: 1.5rem;
+  animation: pointRight 1.5s ease-in-out infinite;
+}
+
+@keyframes pointRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+.year-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.year-nav-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.year-nav-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.year-nav-button:hover::before {
+  left: 100%;
+}
+
+.year-nav-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: var(--hover-color);
+}
+
+.year-number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.year-title {
+  font-size: 0.95rem;
+  color: #ECECEC;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.year-nav-button:hover .year-title {
+  color: #F3C969;
+}
+
+/* ========================================
+   OLD YEAR MARKERS (KEPT FOR REFERENCE)
+   ======================================== */
+
+/* Year Markers Styles - SIMPLIFIED & FORCED VISIBILITY */
 .year-markers {
   padding: 1.5rem 1rem;
   margin-top: 3rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(30, 30, 30, 0.95);
   border-radius: 1rem;
   backdrop-filter: blur(10px);
   position: relative;
-  z-index: 5; /* Relative to parent container */
+  z-index: 100;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(243, 201, 105, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  will-change: auto;
+  contain: layout style paint;
 }
 
 .year-marker {
@@ -732,50 +861,64 @@
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  width: 100px;
+  flex-shrink: 0;
+  will-change: transform;
 }
 
 .year-marker:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .year-dot {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 0 0 3px rgba(255, 255, 255, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 20px currentColor;
+  display: block;
+  flex-shrink: 0;
+  will-change: transform;
 }
 
 .year-marker:hover .year-dot {
-  transform: scale(1.5);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.4);
+  box-shadow: 
+    0 0 0 4px rgba(255, 255, 255, 0.3),
+    0 6px 16px rgba(0, 0, 0, 0.5),
+    0 0 30px currentColor;
 }
 
 .year-text {
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
 }
 
 .year-marker:hover .year-text {
-  font-size: 1rem;
-  transform: scale(1.1);
+  font-size: 1.05rem;
+  transform: scale(1.05);
 }
 
 .year-label {
-  font-size: 0.75rem;
-  color: var(--smoke-gray);
+  font-size: 0.7rem;
+  color: rgba(236, 236, 236, 0.6);
   opacity: 0;
   transition: opacity 0.3s ease;
   white-space: nowrap;
-  max-width: 100px;
+  max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
@@ -787,37 +930,121 @@
 
 /* Responsive adjustments for year markers */
 @media (max-width: 768px) {
-  .year-markers {
-    gap: 1rem;
-    padding: 1rem 0.5rem;
+  /* New Simple Navigation */
+  .timeline-navigation-simple {
+    padding: 1.5rem;
     margin-top: 2rem;
   }
 
+  .nav-instruction {
+    font-size: 0.9rem;
+  }
+
+  .year-buttons-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .year-nav-button {
+    padding: 1rem 0.75rem;
+  }
+
+  .year-number {
+    font-size: 1.5rem;
+  }
+
+  .year-title {
+    font-size: 0.85rem;
+  }
+
+  /* Old markers */
+  .year-markers {
+    gap: 0.75rem;
+    padding: 1rem 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .year-marker {
+    min-width: 60px;
+    padding: 0.5rem 0.75rem;
+  }
+
   .year-dot {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .year-text {
+    font-size: 0.8rem;
+  }
+
+  .year-marker:hover .year-text {
+    font-size: 0.9rem;
+  }
+
+  .year-label {
+    font-size: 0.65rem;
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* New Simple Navigation */
+  .timeline-navigation-simple {
+    padding: 1rem;
+  }
+
+  .nav-instruction {
+    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .instruction-icon {
+    font-size: 1.25rem;
+  }
+
+  .year-buttons-container {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .year-nav-button {
+    padding: 0.875rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .year-number {
+    font-size: 1.25rem;
+  }
+
+  .year-title {
+    font-size: 0.8rem;
+    text-align: right;
+  }
+
+  /* Old markers */
+  .year-markers {
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .year-marker {
+    min-width: 50px;
+  }
+
+  .year-dot {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 
   .year-text {
     font-size: 0.75rem;
   }
 
-  .year-marker:hover .year-text {
-    font-size: 0.875rem;
-  }
-
   .year-label {
-    font-size: 0.625rem;
-    max-width: 80px;
-  }
-}
-
-@media (max-width: 480px) {
-  .year-markers {
-    gap: 0.5rem;
-  }
-
-  .year-label {
-    display: none; /* Hide labels on very small screens */
+    display: none;
   }
 }

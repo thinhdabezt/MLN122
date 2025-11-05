@@ -140,18 +140,18 @@ const TimelineSection = () => {
         ease: 'power2.out'
       });
 
-      // Milestone items stagger
-      gsap.from('.milestone-item', {
-        scrollTrigger: {
-          trigger: '.timeline-container',
-          start: 'top 70%',
-        },
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.6,
-        ease: 'back.out(1.7)'
-      });
+      // Milestone items stagger - DISABLED to prevent fade on refresh
+      // gsap.from('.milestone-item', {
+      //   scrollTrigger: {
+      //     trigger: '.timeline-container',
+      //     start: 'top 70%',
+      //   },
+      //   y: 50,
+      //   opacity: 0,
+      //   stagger: 0.2,
+      //   duration: 0.6,
+      //   ease: 'back.out(1.7)'
+      // });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -211,11 +211,7 @@ const TimelineSection = () => {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/70 z-0"></div>
       
-      {/* Decorative fade overlays - NOTE: Change color here if needed (currently gray-900) */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-900 to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10 pointer-events-none"></div>
-      
-      <div className="max-w-7xl mx-auto relative z-20">{/* Increased z-index to be above fades */}
+      <div className="max-w-7xl mx-auto relative z-20">{/* Content container */}
         
         {/* Header */}
         <div className="timeline-header text-center mb-16">
@@ -242,7 +238,7 @@ const TimelineSection = () => {
           >
             <div className="timeline-track">
               
-              {/* Timeline Path - horizontal gradient line connecting milestones */}
+              {/* Timeline Path - COMMENTED OUT (gradient line) */}
               <div className="timeline-path">
                 <div className="timeline-glow"></div>
               </div>
@@ -296,47 +292,32 @@ const TimelineSection = () => {
 
         </div>
 
-        {/* Year Markers - thay cho slider */}
-        <div className="year-markers flex items-center justify-center gap-4 md:gap-8 mt-12">
+        {/* ========================================
+            YEAR MARKERS - WITH MODAL OPEN FUNCTIONALITY
+        ======================================== */}
+        <div className="year-markers">
           {milestones.map((milestone, index) => (
             <div
               key={milestone.year}
-              className="year-marker text-center cursor-pointer group"
-              onClick={() => {
-                const container = timelineRef.current;
-                const milestoneElements = container.querySelectorAll('.milestone-item');
-                const targetElement = milestoneElements[index];
-                if (targetElement && container) {
-                  // Calculate scroll position to center the element
-                  const containerWidth = container.offsetWidth;
-                  const elementLeft = targetElement.offsetLeft;
-                  const elementWidth = targetElement.offsetWidth;
-                  const scrollPosition = elementLeft - (containerWidth / 2) + (elementWidth / 2);
-                  
-                  container.scrollTo({
-                    left: scrollPosition,
-                    behavior: 'smooth'
-                  });
-                }
-              }}
+              className="year-marker"
+              onClick={() => openModal(index)}
             >
               <div 
-                className="year-dot w-3 h-3 rounded-full mx-auto mb-2 transition-all duration-300 group-hover:scale-150"
+                className="year-dot"
                 style={{ backgroundColor: milestone.color }}
               ></div>
               <div 
-                className="year-text text-sm font-bold transition-colors duration-300 group-hover:text-soft-gold"
+                className="year-text"
                 style={{ color: milestone.color }}
               >
                 {milestone.year}
               </div>
-              <div className="year-label text-xs text-smoke-gray opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">
-                {milestone.title.split('–')[0].trim()}
+              <div className="year-label">
+                {milestone.title}
               </div>
             </div>
           ))}
         </div>
-
       </div>
 
       {/* Modal */}

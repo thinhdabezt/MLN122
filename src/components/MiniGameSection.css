@@ -6,7 +6,7 @@
 .minigame-section {
   min-height: 100vh;
   padding: 5rem 2rem 4rem;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
   position: relative;
   overflow: hidden;
 }
@@ -20,8 +20,8 @@
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 30%, rgba(181, 63, 63, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(243, 201, 105, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(243, 201, 105, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(181, 63, 63, 0.05) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -60,7 +60,7 @@
 
 .minigame-subtitle {
   font-size: 1.125rem;
-  color: var(--smoke-gray);
+  color: rgba(236, 236, 236, 0.7);
   line-height: 1.8;
   margin-bottom: 2rem;
 }
@@ -89,8 +89,8 @@
 
 /* Game Card */
 .game-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
+  border: 1px solid rgba(243, 201, 105, 0.2);
   border-radius: 1rem;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -101,10 +101,10 @@
 }
 
 .game-card:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3),
-              0 0 20px var(--game-color);
-  border-color: var(--game-color);
-  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(243, 201, 105, 0.15);
+  border-color: rgba(243, 201, 105, 0.5);
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 1));
 }
 
 /* Image Container */
@@ -134,7 +134,7 @@
 
 .placeholder-text {
   font-size: 0.875rem;
-  color: var(--smoke-gray);
+  color: rgba(236, 236, 236, 0.6);
   font-family: 'Courier New', monospace;
   opacity: 0.7;
 }
@@ -160,7 +160,7 @@
 }
 
 .quote-text {
-  color: white;
+  color: #ECECEC;
   font-size: 1rem;
   font-style: italic;
   text-align: center;
@@ -184,13 +184,13 @@
 .game-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: white;
+  color: #F3C969;
   margin-bottom: 0.25rem;
 }
 
 .game-subtitle {
   font-size: 0.875rem;
-  color: var(--soft-gold);
+  color: #F3C969;
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -198,14 +198,14 @@
 
 .game-description {
   font-size: 1rem;
-  color: #e0e0e0;
+  color: #ECECEC;
   font-weight: 600;
   line-height: 1.5;
 }
 
 .game-teaser {
   font-size: 0.9rem;
-  color: var(--smoke-gray);
+  color: rgba(236, 236, 236, 0.8);
   line-height: 1.6;
   flex-grow: 1;
 }
@@ -237,7 +237,7 @@
   width: 100%;
   padding: 0.875rem 1.5rem;
   background: transparent;
-  color: white;
+  color: #ECECEC;
   border: 2px solid var(--game-color);
   border-radius: 0.5rem;
   font-size: 1rem;
@@ -268,18 +268,19 @@
 .minigame-cta {
   text-align: center;
   padding: 3rem 2rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 900px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  backdrop-filter: blur(10px);
 }
 
 .cta-text {
   font-size: 1.25rem;
-  color: var(--soft-gold);
+  color: #F3C969;
   margin-bottom: 2rem;
   font-weight: 600;
 }
@@ -303,13 +304,13 @@
 
 .cta-btn.primary {
   background: linear-gradient(135deg, var(--red-earth), var(--soft-gold));
-  color: white;
+  color: #ECECEC;
 }
 
 .cta-btn.secondary {
   background: transparent;
-  color: var(--smoke-gray);
-  border: 2px solid var(--smoke-gray);
+  color: rgba(236, 236, 236, 0.8);
+  border: 2px solid rgba(236, 236, 236, 0.5);
 }
 
 .cta-btn:hover {
@@ -323,8 +324,8 @@
 
 .cta-btn.secondary:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: white;
-  color: white;
+  border-color: #ECECEC;
+  color: #ECECEC;
 }
 
 /* ============================================
@@ -368,7 +369,7 @@
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  color: white;
+  color: #ECECEC;
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -393,13 +394,13 @@
 .modal-title {
   font-size: 2rem;
   font-weight: 800;
-  color: white;
+  color: #F3C969;
   margin-bottom: 0.5rem;
 }
 
 .modal-subtitle {
   font-size: 1rem;
-  color: var(--soft-gold);
+  color: #F3C969;
   font-style: italic;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -431,14 +432,14 @@
 
 .modal-image-text {
   font-size: 1rem;
-  color: var(--soft-gold);
+  color: #F3C969;
   line-height: 1.6;
   max-width: 80%;
 }
 
 .placeholder-label {
   font-size: 0.875rem;
-  color: var(--smoke-gray);
+  color: rgba(236, 236, 236, 0.6);
   font-family: 'Courier New', monospace;
   opacity: 0.6;
 }
@@ -456,7 +457,7 @@
 .section-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--soft-gold);
+  color: #F3C969;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -473,7 +474,7 @@
 .gameplay-list li {
   padding: 0.75rem 0;
   padding-left: 1.5rem;
-  color: #e0e0e0;
+  color: #ECECEC;
   line-height: 1.6;
   position: relative;
 }
@@ -532,7 +533,7 @@
 
 .modal-btn.play-demo {
   background: var(--red-earth);
-  color: white;
+  color: #ECECEC;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -545,14 +546,14 @@
 
 .modal-btn.close {
   background: transparent;
-  color: var(--smoke-gray);
-  border: 2px solid var(--smoke-gray);
+  color: rgba(236, 236, 236, 0.8);
+  border: 2px solid rgba(236, 236, 236, 0.5);
 }
 
 .modal-btn.close:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: white;
-  color: white;
+  border-color: #ECECEC;
+  color: #ECECEC;
 }
 
 /* ============================================

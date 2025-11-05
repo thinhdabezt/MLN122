@@ -8,6 +8,9 @@ import MarketBalanceSection from './components/MarketBalanceSection'
 import TimelineSection from './components/TimelineSection'
 import CaseStudySection from './components/CaseStudySection'
 import MiniGameSection from './components/MiniGameSection'
+import ReferencesSection from './components/ReferencesSection'
+import BackgroundMusic from './components/BackgroundMusic'
+import Footer from './components/Footer'
 import './App.css'
 
 function App() {
@@ -42,11 +45,19 @@ function App() {
           <MiniGameSection setActiveTab={setActiveTab} />
         </div>
       )}
-      
-      {/* 
-        TODO: Thêm các section tiếp theo:
-        - Footer với thông tin liên hệ, tài liệu tham khảo
-      */}
+
+      {/* Tab 4: AI & References */}
+      {activeTab === 'references' && (
+        <div className="references-content">
+          <ReferencesSection />
+        </div>
+      )}
+
+      {/* Footer - shown on all tabs */}
+      <Footer setActiveTab={setActiveTab} />
+
+      {/* Background Music Controller */}
+      <BackgroundMusic />
     </div>
   )
 }
