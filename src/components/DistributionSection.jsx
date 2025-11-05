@@ -22,41 +22,41 @@ const DistributionSection = () => {
   const sectionRef = useRef(null);
   const flowRef = useRef(null);
   const [activeNode, setActiveNode] = useState(null);
-  const [flowAnimating, setFlowAnimating] = useState(false);
+  // const [flowAnimating, setFlowAnimating] = useState(false); // COMMENTED OUT - Animation disabled
 
-  // Flow animation - energy traveling through nodes
-  const playFlowAnimation = () => {
-    if (flowAnimating) return;
-    setFlowAnimating(true);
+  // Flow animation - energy traveling through nodes - COMMENTED OUT
+  // const playFlowAnimation = () => {
+  //   if (flowAnimating) return;
+  //   setFlowAnimating(true);
 
-    const nodes = document.querySelectorAll(".flow-node");
-    const connections = document.querySelectorAll(".flow-connection");
+  //   const nodes = document.querySelectorAll(".flow-node");
+  //   const connections = document.querySelectorAll(".flow-connection");
 
-    // Reset
-    gsap.set(nodes, { className: "+=flow-node" });
-    gsap.set(connections, { className: "+=flow-connection" });
+  //   // Reset
+  //   gsap.set(nodes, { className: "+=flow-node" });
+  //   gsap.set(connections, { className: "+=flow-connection" });
 
-    // Animate through each node
-    const timeline = gsap.timeline({
-      onComplete: () => {
-        setFlowAnimating(false);
-      },
-    });
+  //   // Animate through each node
+  //   const timeline = gsap.timeline({
+  //     onComplete: () => {
+  //       setFlowAnimating(false);
+  //     },
+  //   });
 
-    nodes.forEach((node, index) => {
-      timeline.to(node, {
-        duration: 0.3,
-        onStart: () => {
-          node.classList.add("active");
-          if (index > 0) {
-            connections[index - 1]?.classList.add("active");
-          }
-        },
-      });
+  //   nodes.forEach((node, index) => {
+  //     timeline.to(node, {
+  //       duration: 0.3,
+  //       onStart: () => {
+  //         node.classList.add("active");
+  //         if (index > 0) {
+  //           connections[index - 1]?.classList.add("active");
+  //         }
+  //       },
+  //     });
 
-      timeline.to({}, { duration: 0.4 }); // Pause between nodes
-    });
-  };
+  //     timeline.to({}, { duration: 0.4 }); // Pause between nodes
+  //   });
+  // };
 
   const flowNodes = [
     {
@@ -247,7 +247,7 @@ const DistributionSection = () => {
                   }`}
                   onMouseEnter={() => setActiveNode(node.id)}
                   onMouseLeave={() => setActiveNode(null)}
-                  onClick={() => playFlowAnimation()}
+                  // onClick={() => playFlowAnimation()} // COMMENTED OUT - Click to play animation disabled
                 >
                   <div className={`node-icon bg-gradient-to-br ${node.color}`}>
                     {node.icon}
@@ -302,8 +302,8 @@ const DistributionSection = () => {
             ))}
           </div>
 
-          {/* Play Animation Button */}
-          <div className="text-center mt-8">
+          {/* Play Animation Button - COMMENTED OUT */}
+          {/* <div className="text-center mt-8">
             <button
               onClick={playFlowAnimation}
               disabled={flowAnimating}
@@ -314,7 +314,7 @@ const DistributionSection = () => {
                 {flowAnimating ? "Đang chạy..." : "Xem luồng phân phối"}
               </span>
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Distribution Principles Grid */}
